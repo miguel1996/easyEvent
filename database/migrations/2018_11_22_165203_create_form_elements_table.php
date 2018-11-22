@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFormsTable extends Migration
+class CreateFormElementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateFormsTable extends Migration
      */
     public function up()
     {
-        Schema::create('forms', function (Blueprint $table) {
+        Schema::create('form_elements', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
-        });
-        Schema::table('events', function (Blueprint $table) {
+            $table->string('label');
+            $table->enum('type',['checkbox','date','file','number','radio','text','range']);
             $table->integer('form_id')->unsigned()->index();
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
- 
         });
     }
 
@@ -31,6 +29,6 @@ class CreateFormsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forms');
+        Schema::dropIfExists('form_elements');
     }
 }
