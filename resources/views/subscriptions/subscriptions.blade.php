@@ -9,7 +9,7 @@
                 <div class="card-body">
                    <ul>
                         @foreach($subscriptions as $sub)
-                            {{$sub->title}}
+                            titulo: {{$sub->title}} - - - id_formulario: {{$sub->form_id}}
                         @endforeach
                    </ul>
                 </div>

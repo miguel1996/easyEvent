@@ -10,4 +10,9 @@ class Event extends Model
     {
         return $this->belongsToMany('App\User','subscriptions');
     }
+
+    public function form()
+    {
+        return $this->hasOne("App\Form");
+    }
 }
