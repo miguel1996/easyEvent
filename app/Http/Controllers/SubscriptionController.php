@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
-use App\Event;
 use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
@@ -17,7 +16,7 @@ class SubscriptionController extends Controller
         $user = Auth::user();
         if($user){
              $subscriptions = $user->events()->get();
-             return view('subscriptions.subscriptions',compact('subscriptions'));
+             return view('subscriptions.subscriptions',compact('subscriptions','user'));
         }else{
             return redirect('/');
         }

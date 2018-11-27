@@ -8,6 +8,11 @@ class Form extends Model
 {
     public function event()
     {
-        return $this->belongsTo("App\Event");
+        return $this->hasOne("App\Event");
+    }
+
+    public function form_elements()
+    {
+        return $this->hasMany("App\Form_Element");
     }
 }

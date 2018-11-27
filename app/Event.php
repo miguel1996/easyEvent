@@ -13,6 +13,6 @@ class Event extends Model
 
     public function form()
     {
-        return $this->hasOne("App\Form");
+        return $this->belongsTo("App\Form");
     }
 }
