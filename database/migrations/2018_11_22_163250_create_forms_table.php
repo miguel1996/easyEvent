@@ -18,7 +18,7 @@ class CreateFormsTable extends Migration
             $table->timestamps();
         });
         Schema::table('events', function (Blueprint $table) {
-            $table->integer('form_id')->unsigned()->index();
+            $table->integer('form_id')->unsigned()->unique();
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
  
         });
