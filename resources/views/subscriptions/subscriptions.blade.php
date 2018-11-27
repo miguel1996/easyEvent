@@ -16,6 +16,7 @@
                                 @foreach($sub->form->form_elements as $element)
                                     {{$element->type}} : {{$element->label}}----
                                     {{$element->form_subscription_elements->where('subscription_user_id',$user->id)}}<br>
+                                    
                                 @endforeach
                                 <br><br><br>
                         @endforeach
