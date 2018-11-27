@@ -16,5 +16,12 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/subscriptions','SubscriptionController@index');
+Route::get('/home','HomeController@index');
+// Route::post('/notes','NotesControler@add');
+// Route::get('/notes/first','NotesControler@getFirst');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/events','EventsController@index');
+// Route::post('/events','EventsController@addEvent');
+// Route::get('/events/{id}','EventsController@showDetails');
+// Route::post('/events/{id}/regist/','EventsController@registUser');

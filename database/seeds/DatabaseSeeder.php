@@ -28,5 +28,19 @@ class UserTableSeeder extends Seeder {
             'email' => '2061010@student.uma.pt',
             'password' => bcrypt('qwe123')
         ]);
+        // $this->call(UsersTableSeeder::class);
+    }
+}
+
+class UserTableSeeder extends Seeder {
+
+    public function run()
+    {
+        DB::table('users')->delete();
+        DB::table('users')->insert([
+            'name' => 'tomas',//str_random(10),
+            'email' => 'tomas@hotmail.com',//str_random(10).'@gmail.com',
+            'password' => bcrypt('123456')
+        ]);
     }
 }
