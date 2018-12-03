@@ -23,6 +23,7 @@ class CreateFormSubscriptionsElementsTable extends Migration
             $table->integer('subscription_event_id')->unsigned()->index();
             $table->foreign('subscription_event_id')->references('event_id')->on('subscriptions')->onDelete('cascade');
         });
+
     }
 
     /**

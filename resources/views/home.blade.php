@@ -15,6 +15,10 @@
                     @endif
 
                     You are logged in!
+                    <br>
+                    <a href="./subscriptions">my subscriptions</a>
+                    <br>
+                    <a href="./events">events</a>
                 </div>
             </div>
         </div>

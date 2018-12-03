@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Event;
 use Illuminate\Http\Request;
 
@@ -14,7 +14,13 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        if($user){
+             $events = Event::all();
+             return view('events.events',compact('events'));
+        }else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -22,9 +28,13 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $event = new Event;
+        $event->timestamps = false;
+        $event->title = $request->title;
+        $event->form_id = 3;
+        $event->save();
     }
 
     /**
