@@ -8,7 +8,7 @@ class Event extends Model
 {
     public function users()
     {
-        return $this->belongsToMany('App\User','subscriptions');
+        return $this->belongsToMany('App\User','subscriptions')->withPivot('data');
     }
 
     public function form()

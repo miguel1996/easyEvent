@@ -10,7 +10,9 @@
                    <ul>
                         @foreach($subscriptions as $sub)
                             titulo: {{$sub->title}} - - - id_formulario: {{$sub->form->id}}
-
+                            <br>
+                            pivot table: {{$sub->pivot->user_id}}
+                            <!-- by default the pivot table only contains the keys -->
                             <br>
                             campos do formulario:
                                 @foreach($sub->form->form_elements as $element)
