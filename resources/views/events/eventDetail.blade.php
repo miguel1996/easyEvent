@@ -8,7 +8,10 @@
                 <div class="card-header">{{$event->title}}</div>
                 <div class="card-body">
                    <ul>
-                    <li>{{$event}}</li>
+                    <!-- <li>{{$event}}</li> -->
+                    @foreach($event->elements as $element)
+                    <li>{{$element->type}}:  {{$element->label}}</li>
+                    @endforeach
                       <li><a href="./{{$event->id}}">{{$event->title}}</a></li>
                    </ul>
                 </div>

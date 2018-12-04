@@ -31,9 +31,7 @@ class EventController extends Controller
     public function create(Request $request)
     {
         $event = new Event;
-        $event->timestamps = false;
         $event->title = $request->title;
-        $event->form_id = 3;
         $event->save();
     }
 
