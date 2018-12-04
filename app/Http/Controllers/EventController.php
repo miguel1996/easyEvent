@@ -30,9 +30,18 @@ class EventController extends Controller
      */
     public function create(Request $request)
     {
+        $file = $request->file('event_photo');
+        $filename = time().'-'.$file->getClientOriginalName();
+        $file = $file->move('images/event_photos',$filename);
         $event = new Event;
+        $event->image_path = $filename;
         $event->title = $request->title;
+        $event->description = $request->description;
+        $event->event_date = $request->event_date;
+        $event->opening_subscription_date = $request->opening_subscription_date;
+        $event->closing_subscription_date = $request->closing_subscription_date;
         $event->save();
+        return redirect('/events');
     }
 
     /**

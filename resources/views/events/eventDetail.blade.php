@@ -8,7 +8,7 @@
                 <div class="card-header">{{$event->title}}</div>
                 <div class="card-body">
                    <ul>
-                    <!-- <li>{{$event}}</li> -->
+                    {{$event->description}}
                     @foreach($event->elements as $element)
                     <li>{{$element->type}}:  {{$element->label}}</li>
                     @endforeach

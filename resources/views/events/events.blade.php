@@ -9,7 +9,7 @@
                 <div class="card-body">
                    <ul>
                         @foreach($events as $event)
-                          <a href="./events/{{$event->id}}">{{$event->title}}</a><br>
+                          <a href="/events/{{$event->id}}">{{$event->title}}</a><br>
                         @endforeach
                    </ul>
                 </div>
@@ -26,10 +26,20 @@
                 <div class="card-header">Add event</div>
                 <div class="card-body">
                    <ul>
-                       <form action="/events/" method="post">
+                       <form action="/events/" method="post" enctype="multipart/form-data">
                         @csrf
-                        title:<br>
-                        <input type="text" name="title" placeholder="introduza o titulo do evento"><br>
+                        title: <input type="text" name="title" id="title" placeholder="introduza o titulo do evento"><br>
+                        <br>
+                        description: <input type="text" name="description" id="description">
+                        <br>
+                        img: <input type="file" name="event_photo" title="Event Photo">
+                        <br>
+                        date and time of the event: <input type="datetime-local" name="event_date" id="event_date">
+                        <br>
+                        opening subscription date: <input type="datetime-local" name="opening_subscription_date" id="opening_subscription_date">
+                        <br>
+                        closing subscription date: <input type="datetime-local" name="closing_subscription_date" id="closing_subscription_date">
+                        <br>
                         <input type="submit" value="Submit">
                        </form>
                    </ul>
