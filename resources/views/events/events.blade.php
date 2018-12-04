@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('scripts')
+    <script src="{{asset('js/scripts/events.js')}}"></script>
+@stop
 
 @section('content')
 <div class="container">
@@ -9,8 +12,9 @@
                 <div class="card-body">
                    <ul>
                         @foreach($events as $event)
-                          <a href="/events/{{$event->id}}">{{$event->title}}</a><br>
+                         <li> <a href="/events/{{$event->id}}">{{$event->title}}</a></li>
                         @endforeach
+                        <li><input type="button" id="addElement"></li>
                    </ul>
                 </div>
                
@@ -50,3 +54,4 @@
     </div>
 </div>
 @endsection
+
