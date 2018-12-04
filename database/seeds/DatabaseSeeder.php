@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,9 +13,21 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {    
+        $this->call('GroupTableSeeder');
         $this->call('UserTableSeeder');
         // $this->call(UsersTableSeeder::class);
+    }
+}
+
+
+class GroupTableSeeder extends Seeder {
+
+    public function run()
+    {
+        DB::table('groups')->delete();
+        DB::table('groups')->insert(['id'=>1,'name' => 'admin']);
+        DB::table('groups')->insert(['id'=>2,'name' => 'user']);
     }
 }
 
@@ -25,7 +39,12 @@ class UserTableSeeder extends Seeder {
         DB::table('users')->insert([
             'name' => 'tomas',//str_random(10),
             'email' => 'tomas@hotmail.com',//str_random(10).'@gmail.com',
-            'password' => bcrypt('123456')
+            'password' => bcrypt('123456'),
+            'date_of_birth' => Carbon::parse('07/11/1995'),
+            'address' => 'rua da'.str_random(7),
+            'phone_number' => random_int(100000000,999999999),
+            'gender' => 'male',
+            'group_id' => 1
         ]);
     }
 }

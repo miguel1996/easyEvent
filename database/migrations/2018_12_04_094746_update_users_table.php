@@ -16,7 +16,7 @@ class UpdateUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->date('date_of_birth');
             $table->string('address');
-            $table->string('phone_number')->nullable();
+            $table->integer('phone_number')->nullable();
             $table->enum('gender',['male','female','i prefer not to say','all of the above']);
             $table->integer('group_id')->unsigned()->index();
             $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
