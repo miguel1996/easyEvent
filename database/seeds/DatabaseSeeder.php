@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     {    
         $this->call('GroupTableSeeder');
         $this->call('UserTableSeeder');
+        $this->call('ElementTableSeeder');
         // $this->call(UsersTableSeeder::class);
     }
 }
@@ -47,5 +48,43 @@ class UserTableSeeder extends Seeder {
             'gender' => 'male',
             'group_id' => 1
         ]);
+    }
+}
+
+class ElementTableSeeder extends Seeder {
+
+    public function run()
+    {
+        DB::table('elements')->delete();
+        DB::table('elements')->insert([
+            'label' => 'idade',
+            'type' => 'date'
+        ]);
+        DB::table('elements')->insert([
+            'label' => 'calçado',
+            'type' => 'number'
+        ]);
+        DB::table('elements')->insert([
+            'label' => 'alergias',
+            'type' => 'text'
+        ]);
+    }
+}
+
+class EventTableSeeder extends Seeder {
+
+    public function run()
+    {
+        DB::table('events')->delete();
+        // DB::table('events')->insert([
+        //     'name' => 'tomas',//str_random(10),
+        //     'email' => 'tomas@hotmail.com',//str_random(10).'@gmail.com',
+        //     'password' => bcrypt('123456'),
+        //     'date_of_birth' => Carbon::parse('07/11/1995'),
+        //     'address' => 'rua da '.str_random(7),
+        //     'phone_number' => random_int(100000000,999999999),
+        //     'gender' => 'male',
+        //     'group_id' => 1
+        // ]);
     }
 }

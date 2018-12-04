@@ -18,6 +18,7 @@ class CreateEventsElementsTable extends Migration
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
             $table->integer('element_id')->unsigned()->index();
             $table->foreign('element_id')->references('id')->on('elements')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
