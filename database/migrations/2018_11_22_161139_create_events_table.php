@@ -16,6 +16,11 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('description');
+            $table->string('image_path');
+            $table->dateTime('event_date'); //data e hora em que vai comecar o evento
+            $table->dateTime('opening_subscription_date');    //date e hora em que podemos comecar a nos inscrever no evento
+            $table->dateTime('closing_subscription_date');  //data e hora em que acaba as inscrições para o evento
             $table->timestamps();
         });
     }
