@@ -27,7 +27,8 @@ class GroupTableSeeder extends Seeder {
     {
         DB::table('groups')->delete();
         DB::table('groups')->insert(['id'=>1,'name' => 'admin']);
-        DB::table('groups')->insert(['id'=>2,'name' => 'user']);
+        DB::table('groups')->insert(['id'=>2,'name' => 'member']);
+        DB::table('groups')->insert(['id'=>3,'name' => 'event_manager']);
     }
 }
 
@@ -41,7 +42,7 @@ class UserTableSeeder extends Seeder {
             'email' => 'tomas@hotmail.com',//str_random(10).'@gmail.com',
             'password' => bcrypt('123456'),
             'date_of_birth' => Carbon::parse('07/11/1995'),
-            'address' => 'rua da'.str_random(7),
+            'address' => 'rua da '.str_random(7),
             'phone_number' => random_int(100000000,999999999),
             'gender' => 'male',
             'group_id' => 1
