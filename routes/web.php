@@ -21,7 +21,7 @@ Route::get('/home','HomeController@index');
 // Route::post('/notes','NotesControler@add');
 // Route::get('/notes/first','NotesControler@getFirst');
 
-// Route::get('/events','EventsController@index');
-// Route::post('/events','EventsController@addEvent');
-// Route::get('/events/{id}','EventsController@showDetails');
+Route::get('/events','EventController@index');
+Route::post('/events','EventController@create');
+Route::get('/events/{id}','EventController@show');
 // Route::post('/events/{id}/regist/','EventsController@registUser');

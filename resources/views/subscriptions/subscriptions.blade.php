@@ -8,18 +8,20 @@
                 <div class="card-header">My subscriptions</div>
                 <div class="card-body">
                    <ul>
+                   @php ($serialized = serialize($subscriptions))              
                         @foreach($subscriptions as $sub)
                             titulo: {{$sub->title}} - - - id_formulario: {{$sub->form->id}}
-
+                            <br>
+                            pivot table: {{$sub->pivot->data}}
+                            <!-- by default the pivot table only contains the keys -->
                             <br>
                             campos do formulario:
                                 @foreach($sub->form->form_elements as $element)
                                     {{$element->type}} : {{$element->label}}----
-                                    {{$element->form_subscription_elements->where('subscription_user_id',$user->id)}}<br>
-                                    
                                 @endforeach
                                 <br><br><br>
                         @endforeach
+                    {{unserialize($serialized)}}
                    </ul>
                 </div>
                

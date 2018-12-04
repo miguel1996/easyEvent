@@ -17,8 +17,7 @@ class CreateFormElementsTable extends Migration
             $table->increments('id');
             $table->string('label');
             $table->enum('type',['checkbox','date','file','number','radio','text','range']);
-            $table->integer('form_id')->unsigned()->index();
-            $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
