@@ -54,9 +54,15 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show($id)
     {
-        //
+        $user = Auth::user();
+        if($user){
+             $event = Event::find($id);
+             return view('events.eventDetail',compact('event'));
+        }else{
+            return redirect('/');
+        }
     }
 
     /**

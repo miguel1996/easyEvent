@@ -9,7 +9,7 @@
                 <div class="card-body">
                    <ul>
                         @foreach($events as $event)
-                           {{$event->title}}<br>
+                          <a href="./events/{{$event->id}}">{{$event->title}}</a><br>
                         @endforeach
                    </ul>
                 </div>
