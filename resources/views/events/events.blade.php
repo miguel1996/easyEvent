@@ -14,7 +14,6 @@
                         @foreach($events as $event)
                          <li> <a href="/events/{{$event->id}}">{{$event->title}}</a></li>
                         @endforeach
-                        <li><input type="button" id="addElement"></li>
                    </ul>
                 </div>
                
@@ -43,13 +42,22 @@
                         opening subscription date: <input type="datetime-local" name="opening_subscription_date" id="opening_subscription_date">
                         <br>
                         closing subscription date: <input type="datetime-local" name="closing_subscription_date" id="closing_subscription_date">
-                        <br>
-                        <input type="submit" value="Submit">
-                       </form>
+                       <br>
                    </ul>
                 </div>
-               
             </div>
+            <div class="card-header">Extra fields</div>
+                <div class="card-body">
+                   <ul id="fields_zone">
+                   <li><button type="button" id="addElement">+</button></li>
+                       @php($table = 'elements')
+@php($columns = DB::select("SHOW COLUMNS FROM ". $table))
+@php(preg_match("/^enum\(\'(.*)\'\)$/", $columns, $matches))
+{{explode("','", $matches[1])}}                   </ul>
+                </div>
+            </div>
+            <input type="submit" value="Submit">
+            </form>
         </div>
     </div>
 </div>

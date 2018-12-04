@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -16,6 +17,15 @@ class EventController extends Controller
     {
         $user = Auth::user();
         if($user){
+
+            $table = 'elements';
+            $columns = DB::select("SHOW COLUMNS FROM ". $table." WHERE Field = 'type'");
+            preg_match("/^enum\(\'(.*)\'\)$/", $columns[0]->Type, $matches);
+            $enum = explode("','", $matches[1]);
+            dd($enum);
+            return;                 
+
+
              $events = Event::all();
              return view('events.events',compact('events'));
         }else{
