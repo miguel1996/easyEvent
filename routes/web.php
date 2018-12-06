@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/ee', function () {
+    return view('/layouts.layout');
+});
+
 Auth::routes();
 Route::get('/subscriptions','SubscriptionController@index');
 Route::get('/home','HomeController@index');
