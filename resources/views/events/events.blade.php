@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('scripts')
-    <script src="{{asset('js/scripts/events.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/scripts/events.js')}}"></script>
 @stop
 
 @section('content')
@@ -49,11 +49,14 @@
             <div class="card-header">Extra fields</div>
                 <div class="card-body">
                    <ul id="fields_zone">
-                   <li><button type="button" id="addElement">+</button></li>
-                       @php($table = 'elements')
-@php($columns = DB::select("SHOW COLUMNS FROM ". $table))
-@php(preg_match("/^enum\(\'(.*)\'\)$/", $columns, $matches))
-{{explode("','", $matches[1])}}                   </ul>
+                  <!-- place to add elements -->
+                 </ul>
+                 @php($it = 0)
+                 @foreach($enum as $en)
+                 @php($it++)
+                         <li hidden class="enums" id="en{{$it}}" value="{{$en}}"> {{$en}}</li>
+                        @endforeach
+                 <li><button type="button" id="addElement">+</button></li>
                 </div>
             </div>
             <input type="submit" value="Submit">

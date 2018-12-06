@@ -80,6 +80,11 @@
             @yield('content')
         </main>
     </div>
+    <!-- if you want to put a js script start with for example:
+    @section('scripts')
+        <script src="{{asset('js/scripts/events.js')}}"></script>
+    @stop
+     -->
     @yield('scripts')
 </body>
 </html>
