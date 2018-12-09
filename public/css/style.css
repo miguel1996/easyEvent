@@ -1,0 +1,80 @@
+html, body {
+    background-image: url("https://images.unsplash.com/photo-1468259275383-c4f1b88d5772?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");
+    /*background-image: url("https://images.unsplash.com/photo-1468259275383-c4f1b88d5772?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");*/
+    /*background-image: url("https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");*/
+    /*background-image: url("https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=830&q=80");*/
+    /*background-image: url("https://images.unsplash.com/photo-1514605411468-81f98844a475?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% ; 
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+    background-attachment: fixed;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+    width: 60%; 
+}
+
+.title {
+    font-size: 84px;
+    background-color: #353137;
+    border: double 3px white;
+    color: white;
+}
+
+.links > a {
+    color: white;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.links > a:hover{
+    color: #353137;
+    background-color: white;
+    text-decoration: none;
+}
+
+.links{
+    background-color: #353137;
+    padding: 5px;
+    border: double 3px white;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.card-header{
+    background-color: #353137 !important; 
+    color: white;
+    text-align: center;
+}
