@@ -40,8 +40,6 @@
                 <a href="/subscriptions">Subscriptions</a>
                 <a href="https://nova.laravel.com">Admin</a>
             </div>
-            @endauth
-            @endif
         </div>
     </div>
     <div id="events" class="flex-center position-ref">
@@ -62,5 +60,7 @@
             @endforeach
         </div>
     </div>
+    @endauth
+    @endif
 </body>
 </html>

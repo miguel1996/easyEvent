@@ -1,12 +1,9 @@
 html, body {
     background-image: url("https://images.unsplash.com/photo-1468259275383-c4f1b88d5772?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");
-    /*background-image: url("https://images.unsplash.com/photo-1468259275383-c4f1b88d5772?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");*/
     /*background-image: url("https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");*/
-    /*background-image: url("https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=830&q=80");*/
-    /*background-image: url("https://images.unsplash.com/photo-1514605411468-81f98844a475?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");*/
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% ; 
+    background-position: center center fixed;
+    background-size: 100% auto; 
     color: #fff;
     font-family: 'Montserrat', sans-serif;
     font-weight: 200;
@@ -86,12 +83,9 @@ html, body {
     min-width: 200px;
 }
 
-.navbar, a.navbar-brand, a#navbarDropdown, .dropdown-menu, .dropdown-item{
+.navbar, a.nav-link, a.navbar-brand, a#navbarDropdown, .dropdown-menu, .dropdown-item, .btn, .btn-link{
     color: white !important;
     background-color: #353137 !important;
-}
-
-a.navbar-brand:hover, a#navbarDropdown:hover, .dropdown-item:hover{
-    color: #353137 !important;
-    background-color: white !important;
+    border-color: white !important;
+    text-decoration: none !important;
 }
