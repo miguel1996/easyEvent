@@ -85,3 +85,13 @@ html, body {
     margin: auto;
     min-width: 200px;
 }
+
+.navbar, a.navbar-brand, a#navbarDropdown, .dropdown-menu, .dropdown-item{
+    color: white !important;
+    background-color: #353137 !important;
+}
+
+a.navbar-brand:hover, a#navbarDropdown:hover, .dropdown-item:hover{
+    color: #353137 !important;
+    background-color: white !important;
+}
