@@ -78,3 +78,10 @@ html, body {
     color: white;
     text-align: center;
 }
+
+.register{
+    text-align:center;
+    width: 10%;
+    margin: auto;
+    min-width: 200px;
+}

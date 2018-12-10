@@ -33,34 +33,34 @@
                 easyEvent
             </div>
             @if (Route::has('login'))
-                @auth
-                <div class="links">
-                    <a href="/events">All Events</a>
-                    <a href="https://laracasts.com">My Events</a>
-                    <a href="/subscriptions">Subscriptions</a>
-                    <a href="https://nova.laravel.com">Admin</a>
-                </div>
-                @endauth
+            @auth
+            <div class="links">
+                <a href="/events">All Events</a>
+                <a href="https://laracasts.com">My Events</a>
+                <a href="/subscriptions">Subscriptions</a>
+                <a href="https://nova.laravel.com">Admin</a>
+            </div>
+            @endauth
             @endif
         </div>
     </div>
-    <div id="events">
-        @for ($i = 0; $i < 5; $i++)
-            <div class="flex-center position-ref">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">Title</div>
-                        <div class="card-body">
-                            <p>Description: </p>
-                            <p>Image: </p>
-                            <p>Date: </p>
-                            <p>Sign In </p>
-                        </div>
+    <div id="events" class="flex-center position-ref">
+        <div class="col-md-8">
+            @foreach($events as $event)
+            <div class="card">
+                <div class="card-header"><h4>{{$event->title}}</h4></div>
+                <div class="card-body">
+                    <img src="/images/event_photos/{{$event->image_path}}">
+                    <p>Description: {{$event->description}}</p>                            
+                    <p>Date: {{$event->event_date}}</p>
+                    <div class="register links">
+                        <a href="/events/{{$event->id}}">More</a>
                     </div>
                 </div>
             </div>
             <br>
-        @endfor
+            @endforeach
+        </div>
     </div>
 </body>
 </html>
