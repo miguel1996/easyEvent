@@ -8,7 +8,11 @@
                 <div class="card-header">{{$event->title}}</div>
                 <div class="card-body">
                    <ul>
-                    <li>{{$event}}</li>
+                   <li><img src="/images/event_photos/{{$event->image_path}}"></li>
+                    {{$event->description}}
+                    @foreach($event->elements as $element)
+                    <li>{{$element->type}}:  {{$element->label}}</li>
+                    @endforeach
                       <li><a href="./{{$event->id}}">{{$event->title}}</a></li>
                    </ul>
                 </div>
@@ -18,3 +22,4 @@
     </div>
 </div>
 @endsection
+

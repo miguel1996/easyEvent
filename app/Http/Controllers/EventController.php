@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -16,6 +17,15 @@ class EventController extends Controller
     {
         $user = Auth::user();
         if($user){
+
+            $table = 'elements';
+            $columns = DB::select("SHOW COLUMNS FROM ". $table." WHERE Field = 'type'");
+            preg_match("/^enum\(\'(.*)\'\)$/", $columns[0]->Type, $matches);
+            $enum = explode("','", $matches[1]);
+            dd($enum);
+            return;                 
+
+
              $events = Event::all();
              return view('events.events',compact('events'));
         }else{
@@ -30,11 +40,18 @@ class EventController extends Controller
      */
     public function create(Request $request)
     {
+        $file = $request->file('event_photo');
+        $filename = time().'-'.$file->getClientOriginalName();
+        $file = $file->move('images/event_photos',$filename);
         $event = new Event;
-        $event->timestamps = false;
+        $event->image_path = $filename;
         $event->title = $request->title;
-        $event->form_id = 3;
+        $event->description = $request->description;
+        $event->event_date = $request->event_date;
+        $event->opening_subscription_date = $request->opening_subscription_date;
+        $event->closing_subscription_date = $request->closing_subscription_date;
         $event->save();
+        return redirect('/events');
     }
 
     /**
