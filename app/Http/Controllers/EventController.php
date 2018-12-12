@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Event;
+use App\Element;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -36,18 +37,32 @@ class EventController extends Controller
      */
     public function create(Request $request)
     {
-        $file = $request->file('event_photo');
-        $filename = time().'-'.$file->getClientOriginalName();
-        $file = $file->move('images/event_photos',$filename);
-        $event = new Event;
-        $event->image_path = $filename;
-        $event->title = $request->title;
-        $event->description = $request->description;
-        $event->event_date = $request->event_date;
-        $event->opening_subscription_date = $request->opening_subscription_date;
-        $event->closing_subscription_date = $request->closing_subscription_date;
-        $event->save();
-        return redirect('/events');
+        $numOfElements = $request->numOfElements;
+        for($i = 1;$i<=$numOfElements;$i++){
+            echo $request->input('label'.$i);
+            echo "<br>";
+            echo $request->input('enumSelect'.$i);
+            echo "<br>";          
+            // dd($_POST["label".$i]);
+            $element = new Element;
+            $element->label = $request->input('label'.$i);
+            $element->type = $request->input('enumSelect'.$i);
+            $element->save();
+        }
+
+
+        // $file = $request->file('event_photo');
+        // $filename = time().'-'.$file->getClientOriginalName();
+        // $file = $file->move('images/event_photos',$filename);
+        // $event = new Event;
+        // $event->image_path = $filename;
+        // $event->title = $request->title;
+        // $event->description = $request->description;
+        // $event->event_date = $request->event_date;
+        // $event->opening_subscription_date = $request->opening_subscription_date;
+        // $event->closing_subscription_date = $request->closing_subscription_date;
+        // $event->save();
+        // return redirect('/events');
     }
 
     /**

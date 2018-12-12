@@ -28,8 +28,8 @@
             <div class="card">
                 <div class="card-header">Add event</div>
                 <div class="card-body">
-                   <ul>
-                       <form action="/events/" method="post" enctype="multipart/form-data">
+                <form action="/events/" method="post" enctype="multipart/form-data">
+                   <ul>                     
                         @csrf
                         title: <input type="text" name="title" id="title" placeholder="introduza o titulo do evento"><br>
                         <br>
@@ -44,10 +44,6 @@
                         closing subscription date: <input type="datetime-local" name="closing_subscription_date" id="closing_subscription_date">
                        <br>
                    </ul>
-                </div>
-            </div>
-            <div class="card-header">Extra fields</div>
-                <div class="card-body">
                    <ul id="fields_zone">
                   <!-- place to add elements -->
                  </ul>
@@ -57,10 +53,12 @@
                          <li hidden class="enums" id="en{{$it}}" value="{{$en}}"> {{$en}}</li>
                         @endforeach
                  <li><button type="button" id="addElement">+</button></li>
-                </div>
-            </div>
+                 <input type="hidden" name="numOfElements" value=0 id="numOfElements">
             <input type="submit" value="Submit">
             </form>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </div>
