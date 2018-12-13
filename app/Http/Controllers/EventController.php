@@ -6,6 +6,7 @@ use App\Event;
 use App\Element;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\ElementController;
 
 class EventController extends Controller
 {
@@ -18,7 +19,6 @@ class EventController extends Controller
     {
         $user = Auth::user();
         if($user){
-
             $table = 'elements';
             $columns = DB::select("SHOW COLUMNS FROM ". $table." WHERE Field = 'type'");
             preg_match("/^enum\(\'(.*)\'\)$/", $columns[0]->Type, $matches);
@@ -37,19 +37,10 @@ class EventController extends Controller
      */
     public function create(Request $request)
     {
-        $numOfElements = $request->numOfElements;
-        for($i = 1;$i<=$numOfElements;$i++){
-            echo $request->input('label'.$i);
-            echo "<br>";
-            echo $request->input('enumSelect'.$i);
-            echo "<br>";          
-            // dd($_POST["label".$i]);
-            $element = new Element;
-            $element->label = $request->input('label'.$i);
-            $element->type = $request->input('enumSelect'.$i);
-            $element->save();
-        }
-
+       if(!app('App\Http\Controllers\ElementController')->create($request))
+       return dd("erro ao inserir elementos");
+        
+       
 
         // $file = $request->file('event_photo');
         // $filename = time().'-'.$file->getClientOriginalName();
@@ -62,6 +53,7 @@ class EventController extends Controller
         // $event->opening_subscription_date = $request->opening_subscription_date;
         // $event->closing_subscription_date = $request->closing_subscription_date;
         // $event->save();
+
         // return redirect('/events');
     }
 
