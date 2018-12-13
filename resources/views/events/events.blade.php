@@ -4,6 +4,9 @@
 @stop
 
 @section('content')
+<script type= "text/javascript">
+    $(document).ready(function(){$("#all-events-button").addClass("active");});
+</script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
