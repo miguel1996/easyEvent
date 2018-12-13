@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call('SubscriptionTableSeeder');
         // $this->call(UsersTableSeeder::class);
     }
+
+
 }
 
 
@@ -71,6 +73,12 @@ class ElementTableSeeder extends Seeder {
             'label' => 'alergias',
             'type' => 'text'
         ]);
+        // DB::table('users')->insert([
+        //     'name' => 'tomas',//str_random(10),
+        //     'email' => 'tomas@hotmail.com',//str_random(10).'@gmail.com',
+        //     'password' => bcrypt('123456')
+        // ]);
+        // $this->call(UsersTableSeeder::class);
     }
 }
 

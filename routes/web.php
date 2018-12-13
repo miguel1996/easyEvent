@@ -13,6 +13,10 @@
 
 Route::get('/', 'WelcomeController@index');
 
+Route::get('/ee', function () {
+    return view('/layouts.layout');
+});
+
 Auth::routes();
 Route::get('/subscriptions','SubscriptionController@index');
 Route::get('/home','HomeController@index');

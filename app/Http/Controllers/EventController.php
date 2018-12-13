@@ -23,8 +23,8 @@ class EventController extends Controller
             $columns = DB::select("SHOW COLUMNS FROM ". $table." WHERE Field = 'type'");
             preg_match("/^enum\(\'(.*)\'\)$/", $columns[0]->Type, $matches);
             $enum = explode("','", $matches[1]); //in $enum are all input types for an element               
-             $events = Event::all();
-             return view('events.events',compact('events', 'enum'));
+            $events = Event::all();
+            return view('events.events',compact('events', 'enum'));
         }else{
             return redirect('/');
         }
