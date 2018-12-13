@@ -42,7 +42,7 @@
                         opening subscription date: <input type="datetime-local" name="opening_subscription_date" id="opening_subscription_date">
                         <br>
                         closing subscription date: <input type="datetime-local" name="closing_subscription_date" id="closing_subscription_date">
-                        <br><hr>
+                        <br>
                     </div>
                     <div class="card-header">Event Elements</div>
                     <div class="card-body">
@@ -52,8 +52,22 @@
                         @php($it = 0)
                         @foreach($enum as $en)
                             @php($it++)
-                            <li hidden class="enums" id="en{{$it}}" value="{{$en}}"> {{$en}}</li>
+                            <li hidden class="enums" id="en{{$it}}" value="{{$en}}"></li>
                         @endforeach
+                        
+                        Extra field 1: 
+                        <input id="field1" type="text" name="label1" required="">
+                        Extra field type 1:
+                        <select id="enumSelect1" name="enumSelect1" required="">
+                            <option style="display:none"></option>
+                            <option value="checkbox">checkbox</option>
+                            <option value="date">date</option>
+                            <option value="file">file</option>
+                            <option value="number">number</option>
+                            <option value="radio">radio</option>
+                            <option value="text">text</option>
+                            <option value="range">range</option>
+                        </select><br><br>
                         </ul>
                         <button type="button" id="addElement">+</button>
                         <input type="hidden" name="numOfElements" value=0 id="numOfElements">
