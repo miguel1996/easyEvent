@@ -26,4 +26,4 @@ Route::get('/home','HomeController@index');
 Route::get('/events','EventController@index');
 Route::post('/events','EventController@create');
 Route::get('/events/{id}','EventController@show');
-// Route::post('/events/{id}/regist/','EventsController@registUser');
+Route::post('/events/{id}/regist/','EventController@registUser');

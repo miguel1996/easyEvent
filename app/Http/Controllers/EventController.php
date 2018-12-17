@@ -38,11 +38,13 @@ class EventController extends Controller
      */
     public function create(Request $request)
     {
-        //transaction: rollbacks if any exception occurs
-        DB::transaction(function () use ($request) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction scope
+        $user = Auth::user();
+        if ($user) {
+            //DB::transaction: rollbacks if any exception occurs
+        $transaction_result = DB::transaction(function () use ($request) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
         $result_create_elements = app('App\Http\Controllers\ElementController')->create($request);
             if (!$result_create_elements[0]) {
-                return dd("erro ao inserir elementos");
+                return false;//dd("erro ao inserir elementos");
             }
             // event creation
             $file = $request->file('event_photo');
@@ -56,13 +58,46 @@ class EventController extends Controller
             $event->opening_subscription_date = $request->opening_subscription_date;
             $event->closing_subscription_date = $request->closing_subscription_date;
             if (!$event->save()) {
-                return dd("erro ao criar o evento");
+                return false;//dd("erro ao criar o evento");
             }
             $event->elements()->attach($result_create_elements[1]);//attaches all element ids that are in the $result_create_elements[1] array to the event-elements intermediary table
 
-            // return redirect('/events');
+            return true;//redirect('/events');
         });
+        if(!$transaction_result)
+        {
+            return dd("erro ao criar o evento");
+        }
+        else{
+            return redirect('/events');
+        }
+        //fim de if($user)
+        } else {
+            return redirect('/');//if it is not an autenticated user, we get redirected to the root endpoint
+        }
     }
+
+    public function registUser($id)
+    {
+        $user = Auth::user();
+        if ($user) {
+            //DB::transaction: rollbacks if any exception occurs
+       $transaction_result = DB::transaction(function () use ($id,$user) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
+            if (!$user->events->contains($id)) {
+                $user->events()->attach($id, ['data' => "dados serializados"]);
+            }
+           return true;//redirect('events');
+       });
+        } else {
+            return false;//redirect('/'); if it is not an autenticated user, we get redirected to the root endpoint
+        }
+        if (!$transaction_result) {
+            return redirect('/');
+        } else {
+            return redirect('/events/'.$id);
+        }
+    }
+
 
     /**
      * Store a newly created resource in storage.

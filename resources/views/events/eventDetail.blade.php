@@ -14,6 +14,11 @@
                     <li>{{$element->type}}:  {{$element->label}}</li>
                     @endforeach
                       <li><a href="./{{$event->id}}">{{$event->title}}</a></li>
+                      <li>  <form method="POST" action="/events/{{$event->id}}/regist">
+                      @csrf
+                    <input type="submit" value="Attend to this event" class="btn btn-primary">
+                   </form>
+                   </li>
                    </ul>
                 </div>
                
