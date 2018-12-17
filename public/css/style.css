@@ -1,0 +1,124 @@
+html, body {
+    background-image: url('/images/media/background19.jpg');
+    background-repeat: no-repeat;
+    background-position: center center fixed;
+    background-size: 100% auto; 
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+    background-attachment: fixed;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+    width: 60%; 
+}
+
+.title {
+    font-size: 84px;
+    background-color: #353137;
+    border: double 3px white;
+    color: white;
+}
+
+.links > a {
+    color: white;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.links > a:hover {
+    color: #353137;
+    background-color: white;
+    text-decoration: none;
+}
+
+.links{
+    background-color: #353137;
+    padding: 5px;
+    border: double 3px white;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.card-header{
+    background-color: #353137 !important; 
+    color: white;
+    text-align: center;
+}
+
+.register{
+    text-align:center;
+    /*width: 53%;*/
+    position: absolute;
+    right: 140px;
+    width: 10%;
+    margin: auto;
+    min-width: 200px;
+    float: right;
+}
+
+.navbar, a.nav-link, a.navbar-brand, a#navbarDropdown, .dropdown-menu, .dropdown-item, .btn, .btn-link{
+    color: white !important;
+    background-color: #353137 !important;
+    border-color: white !important;
+    text-decoration: none !important;
+    padding-left: 4px !important; 
+    padding-right: 4px !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1 !important;
+}
+
+a.nav-link:hover, a.navbar-brand:hover, a#navbarDropdown:hover, .dropdown-item:hover{
+    background-color: white !important;
+    color: #353137 !important;
+}
+
+.active{
+    border-bottom: solid 2px white !important;    
+}
+
+/*Imagem à esquerda, altura limitada*/
+.card-body img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 70%;
+    max-height: 250px;
+    height: auto;
+    float: left;
+    clear: right;
+    margin-right: 15px;
+    border: double 3px black;
+}
+
+

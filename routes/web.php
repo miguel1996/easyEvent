@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'WelcomeController@index');
+
+Route::get('/ee', function () {
+    return view('/layouts.layout');
 });
 
 Auth::routes();
@@ -21,7 +23,7 @@ Route::get('/home','HomeController@index');
 // Route::post('/notes','NotesControler@add');
 // Route::get('/notes/first','NotesControler@getFirst');
 
-// Route::get('/events','EventsController@index');
-// Route::post('/events','EventsController@addEvent');
-// Route::get('/events/{id}','EventsController@showDetails');
-// Route::post('/events/{id}/regist/','EventsController@registUser');
+Route::get('/events','EventController@index');
+Route::post('/events','EventController@create');
+Route::get('/events/{id}','EventController@show');
+Route::post('/events/{id}/regist/','EventController@registUser');

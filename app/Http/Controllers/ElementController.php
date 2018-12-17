@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
+use App\Element;
 use Illuminate\Http\Request;
 
-class SubscriptionController extends Controller
+class ElementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,13 +13,7 @@ class SubscriptionController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        if($user){
-             $subscriptions = $user->events()->get();
-             return view('subscriptions.subscriptions',compact('subscriptions','user'));
-        }else{
-            return redirect('/');
-        }
+        //
     }
 
     /**
@@ -27,9 +21,23 @@ class SubscriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $boolAllElementsSaved = true;
+        $elements = array();
+        $numOfElements = $request->numOfElements;
+        for($i = 1;$i<=$numOfElements;$i++){         
+            $element = new Element;
+            $element->label = $request->input('label'.$i);
+            $element->type = $request->input('enumSelect'.$i);
+            if(!$element->save()){   //realiza o insert e caso exista algum erro ao inserir a funcção devolve false
+                $boolAllElementsSaved = false;
+            }else{
+                array_push($elements,$element->id);
+            }
+        }
+
+        return array($boolAllElementsSaved,$elements);
     }
 
     /**
