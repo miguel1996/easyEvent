@@ -69,7 +69,7 @@ html, body {
     margin-bottom: 30px;
 }
 
-.card-header/*, #title*/{
+.card-header{
     background-color: #353137 !important; 
     color: white;
     text-align: center;
@@ -77,12 +77,14 @@ html, body {
 
 .register{
     text-align:center;
+    /*width: 53%;*/
+    position: absolute;
+    right: 140px;
     width: 10%;
     margin: auto;
     min-width: 200px;
+    float: right;
 }
-
-
 
 .navbar, a.nav-link, a.navbar-brand, a#navbarDropdown, .dropdown-menu, .dropdown-item, .btn, .btn-link{
     color: white !important;
@@ -90,11 +92,13 @@ html, body {
     border-color: white !important;
     text-decoration: none !important;
     padding-left: 4px !important; 
-    padding-right: 4px !important; 
+    padding-right: 4px !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1 !important;
 }
 
 a.nav-link:hover, a.navbar-brand:hover, a#navbarDropdown:hover, .dropdown-item:hover{
-    border-bottom: solid 2px white !important;
     background-color: white !important;
     color: #353137 !important;
 }
@@ -103,7 +107,18 @@ a.nav-link:hover, a.navbar-brand:hover, a#navbarDropdown:hover, .dropdown-item:h
     border-bottom: solid 2px white !important;    
 }
 
-
-
+/*Imagem à esquerda, altura limitada*/
+.card-body img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 70%;
+    max-height: 250px;
+    height: auto;
+    float: left;
+    clear: right;
+    margin-right: 15px;
+    border: double 3px black;
+}
 
 
