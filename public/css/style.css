@@ -1,6 +1,5 @@
 html, body {
-    background-image: url("https://images.unsplash.com/photo-1468259275383-c4f1b88d5772?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");
-    /*background-image: url("https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");*/
+    background-image: url('/images/media/background19.jpg');
     background-repeat: no-repeat;
     background-position: center center fixed;
     background-size: 100% auto; 
@@ -54,7 +53,7 @@ html, body {
     text-transform: uppercase;
 }
 
-.links > a:hover{
+.links > a:hover {
     color: #353137;
     background-color: white;
     text-decoration: none;
@@ -78,9 +77,13 @@ html, body {
 
 .register{
     text-align:center;
+    /*width: 53%;*/
+    position: absolute;
+    right: 140px;
     width: 10%;
     margin: auto;
     min-width: 200px;
+    float: right;
 }
 
 .navbar, a.nav-link, a.navbar-brand, a#navbarDropdown, .dropdown-menu, .dropdown-item, .btn, .btn-link{
@@ -88,4 +91,34 @@ html, body {
     background-color: #353137 !important;
     border-color: white !important;
     text-decoration: none !important;
+    padding-left: 4px !important; 
+    padding-right: 4px !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1 !important;
 }
+
+a.nav-link:hover, a.navbar-brand:hover, a#navbarDropdown:hover, .dropdown-item:hover{
+    background-color: white !important;
+    color: #353137 !important;
+}
+
+.active{
+    border-bottom: solid 2px white !important;    
+}
+
+/*Imagem à esquerda, altura limitada*/
+.card-body img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 70%;
+    max-height: 250px;
+    height: auto;
+    float: left;
+    clear: right;
+    margin-right: 15px;
+    border: double 3px black;
+}
+
+

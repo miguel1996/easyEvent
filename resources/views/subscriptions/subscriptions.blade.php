@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<script type= "text/javascript">
+    $(document).ready(function(){$("#subs-button").addClass("active");});
+</script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
