@@ -10,11 +10,11 @@
                    <ul>
                    <li><img src="/images/event_photos/{{$event->image_path}}"></li>
                     {{$event->description}}
+                    <form method="POST" action="/events/{{$event->id}}/regist">
                     @foreach($event->elements as $element)
-                    <li>{{$element->type}}:  {{$element->label}}</li>
+                    <li><input type="{{$element->type}}" name="element{{$element->id}}">  {{$element->label}}</li>
                     @endforeach
-                      <li><a href="./{{$event->id}}">{{$event->title}}</a></li>
-                      <li>  <form method="POST" action="/events/{{$event->id}}/regist">
+                      <li>  
                       @csrf
                     <input type="submit" value="Attend to this event" class="btn btn-primary">
                    </form>
