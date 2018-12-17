@@ -76,11 +76,8 @@ html, body {
 }
 
 .register{
-    text-align:center;
-    /*width: 53%;*/
-    position: absolute;
-    right: 140px;
-    width: 10%;
+    text-align: center;
+    width: 53%;
     margin: auto;
     min-width: 200px;
     float: right;
