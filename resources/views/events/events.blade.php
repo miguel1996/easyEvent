@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('scripts')
     <script type="text/javascript" src="{{asset('js/scripts/events.js')}}"></script>
-@stop
+@endsection
 
 @section('content')
 <script type= "text/javascript">
@@ -58,19 +58,7 @@
                             <li hidden class="enums" id="en{{$it}}" value="{{$en}}"></li>
                         @endforeach
                         
-                        Extra field 1: 
-                        <input id="field1" type="text" name="label1" required="">
-                        Extra field type 1:
-                        <select id="enumSelect1" name="enumSelect1" required="">
-                            <option style="display:none"></option>
-                            <option value="checkbox">checkbox</option>
-                            <option value="date">date</option>
-                            <option value="file">file</option>
-                            <option value="number">number</option>
-                            <option value="radio">radio</option>
-                            <option value="text">text</option>
-                            <option value="range">range</option>
-                        </select><br><br>
+                        <br><br>
                         </ul>
                         <button type="button" id="addElement">+</button>
                         <input type="hidden" name="numOfElements" value=0 id="numOfElements">
