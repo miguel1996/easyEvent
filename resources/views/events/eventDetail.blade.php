@@ -5,23 +5,32 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{$event->title}}</div>
-                <div class="card-body">
-                   <ul>
-                   <li><img src="/images/event_photos/{{$event->image_path}}"></li>
-                    {{$event->description}}
-                    <form method="POST" action="/events/{{$event->id}}/regist">
-                    @foreach($event->elements as $element)
-                    <li><input type="{{$element->type}}" name="element{{$element->id}}">  {{$element->label}}</li>
-                    @endforeach
-                      <li>  
-                      @csrf
-                    <input type="submit" value="Attend to this event" class="btn btn-primary">
-                   </form>
-                   </li>
-                   </ul>
+                <div class="card-header">
+                    {{$event->title}}
                 </div>
-               
+                <div class="card-body">
+                    <ul>
+                        <div class="card-image">
+                            <img src="/images/event_photos/{{$event->image_path}}">
+                        </div>
+                        <p>{{$event->description}}</p>
+                        <form method="POST" action="/events/{{$event->id}}/regist">
+                            @foreach($event->elements as $element)
+                            <br>
+                            <li>
+                                <input type="{{$element->type}}" name="element{{$element->id}}"> 
+                                {{$element->label}}
+                            </li>
+                            @endforeach
+                            <br>
+                            <li>  
+                                @csrf
+                                <input type="submit" value="Attend to this event" class="btn btn-primary">
+                            </li>
+                        </form>
+                    </ul>
+                </div>
+
             </div>
         </div>
     </div>

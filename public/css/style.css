@@ -128,4 +128,8 @@ a.nav-link:hover, a.navbar-brand:hover, a#navbarDropdown:hover, .dropdown-item:h
     border: double 3px black;
 }
 
+.card-body li{
+    list-style-type: none;
+}
+
 
