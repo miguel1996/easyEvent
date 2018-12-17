@@ -14,7 +14,7 @@
                     @foreach($event->elements as $element)
                     <li><input type="{{$element->type}}" name="element{{$element->id}}">  {{$element->label}}</li>
                     @endforeach
-                      <li>  
+                      <li>
                       @csrf
                     <input type="submit" value="Attend to this event" class="btn btn-primary">
                    </form>
