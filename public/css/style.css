@@ -90,6 +90,9 @@ html, body {
     text-decoration: none !important;
     padding-left: 4px !important; 
     padding-right: 4px !important;
+}
+
+.navbar{
     position: sticky !important;
     top: 0 !important;
     z-index: 1 !important;
