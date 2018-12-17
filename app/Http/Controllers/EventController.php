@@ -44,7 +44,7 @@ class EventController extends Controller
             if (!$result_create_elements[0]) {
                 return dd("erro ao inserir elementos");
             }
-            //event creation
+            // event creation
             $file = $request->file('event_photo');
             $filename = time().'-'.$file->getClientOriginalName();
             $file = $file->move('images/event_photos', $filename);
@@ -58,7 +58,7 @@ class EventController extends Controller
             if (!$event->save()) {
                 return dd("erro ao criar o evento");
             }
-
+            $event->elements()->attach($result_create_elements[1]);//attaches all element ids that are in the $result_create_elements[1] array to the event-elements intermediary table
 
             // return redirect('/events');
         });
