@@ -37,7 +37,7 @@ class ElementController extends Controller
             }
         }
 
-        return $boolAllElementsSaved;
+        return array($boolAllElementsSaved,$elements);
     }
 
     /**
