@@ -11,8 +11,9 @@ class WelcomeController extends Controller
     public function index()
     {
         // $event = Event::find($id);
-        $events = Event::whereDate('opening_subscription_date','<', Carbon::now()->toDateTimeString())
-        ->whereDate('closing_subscription_date','>',Carbon::now()->toDateTimeString())
+        $events = Event::where('opening_subscription_date','<', Carbon::now())
+        ->where('closing_subscription_date','>',Carbon::now())
+        ->orderBy('closing_subscription_date','asc')
         ->get();
         return view('welcome',compact('events'));
     }

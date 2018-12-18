@@ -24,7 +24,6 @@ class EventController extends Controller
 
             $events = Event::where('event_date','>=', Carbon::now())
             ->get();
-            dd($events,Carbon::now());
             return view('events.events', compact('events'));
         } else {
             return redirect('/');
