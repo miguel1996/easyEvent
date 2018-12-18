@@ -90,12 +90,13 @@ class EventTableSeeder extends Seeder {
         DB::table('events')->insert([
             'title' => 'Atividade de Padel',//str_random(10),
             'description' => 'atividade a decorrer no centro de padel do funchal em conjunção com o clube de padel da madeira',//str_random(10).'@gmail.com',
-            'image_path' => str_random(10),//bcrypt('123456'),
+            'image_path' => '1543938927-evento1.PNG',//bcrypt('123456'),
             'event_date' => Carbon::parse('03/01/2019 16:00'),
             'opening_subscription_date' => Carbon::parse('01/01/2019 16:00'),
             'closing_subscription_date' => Carbon::parse('02/01/2019 16:00'),
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
+            'user_id' => '1'
         ]);
     }
 }
@@ -107,13 +108,13 @@ class EventElementsTableSeeder extends Seeder {
         DB::table('events_elements')->delete();
         DB::table('events_elements')->insert([
             'event_id' => 1,//str_random(10),
-            'element_id' => 1,//str_random(10).'@gmail.com',
+            'element_id' => 2,//str_random(10).'@gmail.com',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
         DB::table('events_elements')->insert([
             'event_id' => 1,//str_random(10),
-            'element_id' => 2,//str_random(10).'@gmail.com',
+            'element_id' => 3,//str_random(10).'@gmail.com',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);

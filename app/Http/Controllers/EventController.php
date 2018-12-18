@@ -41,7 +41,7 @@ class EventController extends Controller
         $user = Auth::user();
         if ($user) {
             //DB::transaction: rollbacks if any exception occurs
-        $transaction_result = DB::transaction(function () use ($request) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
+        $transaction_result = DB::transaction(function () use ($request,$user) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
         $result_create_elements = app('App\Http\Controllers\ElementController')->create($request);
             if (!$result_create_elements[0]) {
                 return false;//dd("erro ao inserir elementos");
@@ -57,6 +57,7 @@ class EventController extends Controller
             $event->event_date = $request->event_date;
             $event->opening_subscription_date = $request->opening_subscription_date;
             $event->closing_subscription_date = $request->closing_subscription_date;
+            $event->user_id = $user->id;
             if (!$event->save()) {
                 return false;//dd("erro ao criar o evento");
             }

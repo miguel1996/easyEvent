@@ -12,7 +12,7 @@
                     {{$event->description}}
                     <form method="POST" action="/events/{{$event->id}}/regist">
                     @foreach($event->elements as $element)
-                    <li><input type="{{$element->type}}" name="element{{$element->id}}">  {{$element->label}}</li>
+                    <li><input type="{{$element->type}}" name="element{{$element->id}}" required>  {{$element->label}}</li>
                     @endforeach
                       <li>
                       @csrf

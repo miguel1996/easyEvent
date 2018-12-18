@@ -16,16 +16,17 @@
                             titulo: {{$sub->title}}
                             <br>
                             @php ($unserializedData = unserialize($sub->pivot->data))  
-                            pivot table:   @foreach($unserializedData as $key => $value)
+                            <!-- unserialize the data first so that it gets stored as an array -->
+                            pivot table:  <br> @foreach($unserializedData as $key => $value)
                             @php($element = \App\Element::find($key))
                                     chave:{{$key}}->significado:{{$element->label}} : {{$value}}
                                     <br>
                                 @endforeach    
                             <!-- by default the pivot table only contains the keys but in our case there is a data field that is serialized -->
                             <br>
-                            campos do formulario:
+                            <strong>campos do formulario:</strong><br>
                                 @foreach($sub->elements as $element)
-                                    {{$element->type}} : {{$element->label}}----
+                                    {{$element->label}}->{{$element->type}}<br>
                                 @endforeach
                                 <br><br><br>
                         @endforeach
