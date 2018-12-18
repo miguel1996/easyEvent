@@ -12,7 +12,6 @@ class UserController extends Controller
         $user = Auth::user();
         if($user){
              $myEvents = Event::where('user_id',$user->id)->get();
-             dd($myEvents);
              return view('users.events',compact('myEvents'));
         }else{
             return redirect('/');
