@@ -18,7 +18,7 @@
                             @foreach($event->elements as $element)
                             <br>
                             <li>
-                                <input type="{{$element->type}}" name="element{{$element->id}}"> 
+                                <input type="{{$element->type}}" name="element{{$element->id}}" required> 
                                 {{$element->label}}
                             </li>
                             @endforeach
