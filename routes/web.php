@@ -27,3 +27,11 @@ Route::get('/events/{id}','EventController@show');
 Route::post('/events/{id}/regist/','EventController@registUser');
 
 Route::get('/user/events','UserController@myEvents');
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
+{
+    Route::get('/admin', function()
+    {
+        dd("adminnn");
+    });
+
+});

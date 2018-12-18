@@ -32,4 +32,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Event','subscriptions')->withPivot('data');
     }
+
+    public function group()
+    {
+        return $this->belongsTo('App\Group');
+    }
 }
