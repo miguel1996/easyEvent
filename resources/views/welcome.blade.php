@@ -44,11 +44,17 @@
                     <img src="/images/event_photos/{{$event->image_path}}">
                 </div>
                 <br>
-                <p>{{$event->description}}</p>                            
-                <p>Date: {{$event->event_date}}</p>
-                <p class="register links">
-                    <a href="/events/{{$event->id}}">More</a>
-                </p>
+                <div class="card-text">
+                    <p>{{$event->description}}</p>
+                    <div class="extra">
+                        <p>Subscription open until {{$event->closing_subscription_date}}</p>
+                        <p>Event date: {{$event->event_date}}</p>
+                        <p>Click <a href="">here</a> to register</p>
+                    </div>
+                    <div class="register links">
+                        <button type="button" onclick="displayHiddenContent()">More</button><!--Tens um problema aqui-->
+                    </div>
+                </div>
             </div>
         </div>
         <br>
