@@ -75,12 +75,19 @@ html, body {
     text-align: center;
 }
 
+.card-body{
+    position: relative;
+}
+
 .register{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
     text-align: center;
-    width: 53%;
-    margin: auto;
-    min-width: 200px;
-    float: right;
+    width: 10%;
+    margin-left: auto;
+    margin-right: 15px;
+    min-width: 150px;
 }
 
 .navbar, a.nav-link, a.navbar-brand, a#navbarDropdown, .dropdown-menu, .dropdown-item, .btn, .btn-link{
@@ -113,12 +120,16 @@ a.nav-link:hover, a.navbar-brand:hover, a#navbarDropdown:hover, .dropdown-item:h
     margin-right: auto;
     display: block;
     max-width: 70%;
-    max-height: 250px;
+    max-height: 280px;
     height: auto;
     float: left;
     clear: right;
     margin-right: 15px;
     border: double 3px black;
+}
+
+.card-body li{
+    list-style-type: none;
 }
 
 

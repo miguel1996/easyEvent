@@ -40,13 +40,15 @@
         <div class="card">
             <div class="card-header"><h4>{{$event->title}}</h4></div>
             <div class="card-body">
-                <img src="/images/event_photos/{{$event->image_path}}">--> 
-                <br>
-                <p>Description: {{$event->description}}</p>                            
-                <p>Date: {{$event->event_date}}</p>
-                <div class="register links">
-                    <a href="/events/{{$event->id}}">More</a>
+                <div class="card-image">
+                    <img src="/images/event_photos/{{$event->image_path}}">
                 </div>
+                <br>
+                <p>{{$event->description}}</p>                            
+                <p>Date: {{$event->event_date}}</p>
+                <p class="register links">
+                    <a href="/events/{{$event->id}}">More</a>
+                </p>
             </div>
         </div>
         <br>
