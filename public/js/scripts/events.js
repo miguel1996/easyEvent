@@ -10,7 +10,7 @@ $(document).ready(function(){
             numElements++;
 
             //will append a list of the possible enums and the necessary fields to insert an extra element to the event subscription
-            $("#fields_zone").append("Extra field " + numElements + ': <input id="field' + numElements + '" type="text" name="label' + numElements + '" required pattern="[a-zA-Z]{4,}">' + " ");
+            $("#fields_zone").append("Extra field " + numElements + ': <input id="field' + numElements + '" type="text" name="label' + numElements + '" required pattern="[a-z A-Z]{4,}">' + " ");
             $("#fields_zone").append("Extra field type " + numElements + ':<select id="enumSelect' + numElements + '" name="enumSelect' + numElements + '" required></select><br><br>');
             $("#enumSelect" + numElements).append('<option style="display:none">' + "</option>");
             $(".enums").each(function () {
@@ -25,5 +25,48 @@ $(document).ready(function(){
         };
     });
 
+    
+
 });
+
+$("#event_date").change(function(){
+    
+    if(!checkDate($(this).val(), Date(), "Data de início do evento tem de ser superior a data atual")){
+        $(this).css({ "border-color": "red" });
+    }else
+    {
+        $(this).css({ "border-color": "green" });
+    }
+           
+});
+
+$("#opening_subscription_date").change(function() {
+    if (!checkDate($("#event_date").val(), $(this).val(), "Data da subscrição, superior ou igual a data do evento!")) {
+        $(this).css({ "border-color": "red" });
+    } else {
+        $(this).css({ "border-color": "green" });
+    }
+});
+
+$("#closing_subscription_date").change(function() {
+    if (!checkDate($("#opening_subscription_date").val(), $(this).val(), "Data de início da subscrição, superior ou igual a data do fim!")) {
+        $(this).css({ "border-color": "red" });
+    } else {
+        $(this).css({ "border-color": "green" });
+    }
+});
+
+
+function checkDate(startDt, endDt, message) {
+    if (new Date(startDt).getTime() <= new Date(endDt).getTime()) {
+        // Your code here
+        alert(message);
+        console.log(Date());
+        return false;
+    } else {
+        console.log("start bigger than end dt");
+        console.log(Date());
+        return true;
+    }
+}
 

@@ -5,7 +5,7 @@
 
 @section('content')
 <script type= "text/javascript">
-    $(document).ready(function(){$("#all-events-button").addClass("active");});
+    $(document).ready(function(){$("#nall-events-butto").addClass("active");});
 </script>
 <div class="container">
     <div class="row justify-content-center">
@@ -33,20 +33,20 @@
                     @csrf
                     <div class="card-header">Add event</div>
                     <div class="card-body">
-                        title: <input type="text" name="title" id="title" placeholder="introduza o titulo do evento">
+                        title: <input type="text" name="title" id="title" placeholder="introduza o titulo do evento" required>
                         <br>
                         <br>
                         description:
                         <br>
-                        <textarea name="description" id="description" cols="70" rows="10"></textarea>
+                        <textarea name="description" id="description" cols="70" rows="10" required></textarea>
                         <br>
-                        img: <input type="file" name="event_photo" title="Event Photo">
+                        img: <input type="file" name="event_photo" title="Event Photo" required>
                         <br>
-                        date and time of the event: <input type="datetime-local" name="event_date" id="event_date">
+                        date and time of the event: <input type="datetime-local" name="event_date" id="event_date" required>
                         <br>
-                        opening subscription date: <input type="datetime-local" name="opening_subscription_date" id="opening_subscription_date">
+                        opening subscription date: <input type="datetime-local" name="opening_subscription_date" id="opening_subscription_date" required>
                         <br>
-                        closing subscription date: <input type="datetime-local" name="closing_subscription_date" id="closing_subscription_date">
+                        closing subscription date: <input type="datetime-local" name="closing_subscription_date" id="closing_subscription_date" required>
                         <br>
                     </div>
                     <div class="card-header">Event Elements</div>
