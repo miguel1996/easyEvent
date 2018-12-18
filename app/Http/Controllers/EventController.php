@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Event;
 use App\Element;
@@ -20,7 +21,10 @@ class EventController extends Controller
     {
         $user = Auth::user();
         if ($user) {
-            $events = Event::all();
+
+            $events = Event::where('event_date','>=', Carbon::now())
+            ->get();
+            dd($events,Carbon::now());
             return view('events.events', compact('events'));
         } else {
             return redirect('/');
