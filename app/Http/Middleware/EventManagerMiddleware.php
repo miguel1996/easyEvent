@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Closure;
 
-class AdminMiddleware
+class EventManagerMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class AdminMiddleware
     {
         $user = Auth::user();
         if ($user) {
-            if (strcmp($user->group->name, "admin") == 0) { //0 means that the string is equal
+            if (strcmp($user->group->name, "admin") == 0 || strcmp($user->group->name, "event_manager") == 0) { //0 means that the string is equal
                 return $next($request);
             }
         }

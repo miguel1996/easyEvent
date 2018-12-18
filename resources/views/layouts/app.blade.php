@@ -31,9 +31,13 @@
                     <i style="font-size:20pt;" class="fa fa-home"></i>
                 </a>
                 <a id="all-events-button" class="navbar-brand" href="/events">All Events</a>
-                <a id="my-events-button" class="navbar-brand" href="/user/events">My Events</a>
                 <a id="subs-button" class="navbar-brand" href="/subscriptions">Subscriptions</a>
-                <a id="admin-button" class="navbar-brand" href="https://nova.laravel.com">Admin</a>
+                @if (strcmp(Auth::user()->group->name,"member") != 0)  
+                    <a id="my-events-button" class="navbar-brand" href="/user/events">Event Management</a>     
+                    @if (strcmp(Auth::user()->group->name,"admin") == 0)         
+                        <a id="admin-button" class="navbar-brand" href="/admin">Admin</a>
+                    @endif
+                @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -57,6 +61,7 @@
                             @endif
                         </li>
                         @else
+                        <a class="navbar-brand">{{ Auth::user()->group->name }}</a>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>

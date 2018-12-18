@@ -26,7 +26,7 @@ Route::post('/events','EventController@create');
 Route::get('/events/{id}','EventController@show');
 Route::post('/events/{id}/regist/','EventController@registUser');
 
-Route::get('/user/events','UserController@myEvents');
+
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
     Route::get('/admin', function()
@@ -35,3 +35,10 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     });
 
 });
+
+Route::group(['middleware' => 'App\Http\Middleware\EventManagerMiddleware'], function()
+{
+    Route::get('/user/events','UserController@myEvents');
+
+});
+

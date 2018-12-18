@@ -89,7 +89,7 @@
                             <input id="genderfemale" type="radio" name="gender" value="female" required><label>Female</label>
                                 @if ($errors->has('gender'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('phone_number') }}</strong>
+                                        <strong>{{ $errors->first('gender') }}</strong>
                                     </span>
                                 @endif
                             </div>

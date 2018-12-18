@@ -75,7 +75,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'phone_number' => $data['phone_number'],
             'gender' => $data['gender'],
-            'group_id' => 1
+            'group_id' => 2
         ]);
     }
 }
