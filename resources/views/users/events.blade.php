@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('scripts')
+<script type="text/javascript" src="{{asset('js/scripts/events.js')}}"></script>
     <script type= "text/javascript">
     $(document).ready(function(){$("#my-events-button").addClass("active");});
 </script>

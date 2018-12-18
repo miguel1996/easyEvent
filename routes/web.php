@@ -22,7 +22,7 @@ Route::get('/subscriptions','SubscriptionController@index');
 Route::get('/home','HomeController@index');
 
 Route::get('/events','EventController@index');
-Route::post('/events','EventController@create');
+
 Route::get('/events/{id}','EventController@show');
 Route::post('/events/{id}/regist/','EventController@registUser');
 
@@ -37,8 +37,9 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\EventManagerMiddleware'], function()
-{
+{//only admins and event managers can do this
     Route::get('/user/events','UserController@myEvents');
+    Route::post('/events','EventController@create');
 
 });
 
