@@ -21,7 +21,6 @@ class EventController extends Controller
     {
         $user = Auth::user();
         if ($user) {
-
             $events = Event::where('event_date','>=', Carbon::now())
             ->get();
             return view('events.events', compact('events'));
@@ -69,6 +68,7 @@ class EventController extends Controller
             return dd("erro ao criar o evento");
         }
         else{
+            
             return redirect('/events');
         }
         //fim de if($user)
@@ -101,6 +101,7 @@ class EventController extends Controller
         if (!$transaction_result) {
             return redirect('/');
         } else {
+            $request->session()->flash('status', 'Task was successful!');
             return redirect('/events/'.$id);
         }
     }
