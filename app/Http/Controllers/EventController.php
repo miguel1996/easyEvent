@@ -77,14 +77,21 @@ class EventController extends Controller
         }
     }
 
-    public function registUser($id)
+    public function registUser(Request $request,$id)
     {
         $user = Auth::user();
         if ($user) {
+            $event = Event::find($id);
+            $subscription_elements_data = array();
+            foreach($event->elements as $element)
+            {
+                $subscription_elements_data = array_add($subscription_elements_data,$element->id,$request->input('element'.$element->id));
+            }
+            $serialized_data = serialize($subscription_elements_data);
             //DB::transaction: rollbacks if any exception occurs
-       $transaction_result = DB::transaction(function () use ($id,$user) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
+       $transaction_result = DB::transaction(function () use ($id,$user,$serialized_data) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
             if (!$user->events->contains($id)) {
-                $user->events()->attach($id, ['data' => "dados serializados"]);
+                $user->events()->attach($id, ['data' => $serialized_data]);
             }
            return true;//redirect('events');
        });
