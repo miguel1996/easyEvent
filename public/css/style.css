@@ -76,11 +76,8 @@ html, body {
 }
 
 .register{
-    text-align:center;
-    /*width: 53%;*/
-    position: absolute;
-    right: 140px;
-    width: 10%;
+    text-align: center;
+    width: 53%;
     margin: auto;
     min-width: 200px;
     float: right;
@@ -93,6 +90,9 @@ html, body {
     text-decoration: none !important;
     padding-left: 4px !important; 
     padding-right: 4px !important;
+}
+
+.navbar{
     position: sticky !important;
     top: 0 !important;
     z-index: 1 !important;

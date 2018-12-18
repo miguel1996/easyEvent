@@ -40,9 +40,7 @@
         <div class="card">
             <div class="card-header"><h4>{{$event->title}}</h4></div>
             <div class="card-body">
-                <img src="https://seda.college/wp-content/uploads/party.jpg">
-
-                <!--                 <img src="/images/event_photos/{{$event->image_path}}">--> 
+                <img src="/images/event_photos/{{$event->image_path}}">--> 
                 <br>
                 <p>Description: {{$event->description}}</p>                            
                 <p>Date: {{$event->event_date}}</p>
