@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','date_of_birth','address','phone_number','gender','group_id'
     ];
 
     /**
@@ -31,5 +31,10 @@ class User extends Authenticatable
     public function events()
     {
         return $this->belongsToMany('App\Event','subscriptions')->withPivot('data');
+    }
+
+    public function group()
+    {
+        return $this->belongsTo('App\Group');
     }
 }

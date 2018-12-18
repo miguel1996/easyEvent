@@ -31,7 +31,7 @@
                     <i style="font-size:20pt;" class="fa fa-home"></i>
                 </a>
                 <a id="all-events-button" class="navbar-brand" href="/events">All Events</a>
-                <a id="my-events-button" class="navbar-brand" href="https://laracasts.com">My Events</a>
+                <a id="my-events-button" class="navbar-brand" href="/user/events">My Events</a>
                 <a id="subs-button" class="navbar-brand" href="/subscriptions">Subscriptions</a>
                 <a id="admin-button" class="navbar-brand" href="https://nova.laravel.com">Admin</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

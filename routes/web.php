@@ -20,10 +20,18 @@ Route::get('/ee', function () {
 Auth::routes();
 Route::get('/subscriptions','SubscriptionController@index');
 Route::get('/home','HomeController@index');
-// Route::post('/notes','NotesControler@add');
-// Route::get('/notes/first','NotesControler@getFirst');
 
 Route::get('/events','EventController@index');
 Route::post('/events','EventController@create');
 Route::get('/events/{id}','EventController@show');
 Route::post('/events/{id}/regist/','EventController@registUser');
+
+Route::get('/user/events','UserController@myEvents');
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
+{
+    Route::get('/admin', function()
+    {
+        dd("adminnn");
+    });
+
+});
