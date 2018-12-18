@@ -36,7 +36,9 @@
                         title: <input type="text" name="title" id="title" placeholder="introduza o titulo do evento">
                         <br>
                         <br>
-                        description: <input type="text" name="description" id="description">
+                        description:
+                        <br>
+                        <textarea name="description" id="description" cols="70" rows="10"></textarea>
                         <br>
                         img: <input type="file" name="event_photo" title="Event Photo">
                         <br>
