@@ -18,9 +18,10 @@ class UserController extends Controller
          */
     public function login()
     {
+        //try to login with data from the request
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             $user = Auth::user();
-            $success['token'] =  $user->createToken('MyApp')-> accessToken;
+            $success['token'] =  $user->createToken('MyApp')-> accessToken;//returns the token that must be used to make authenticated requests
             return response()->json(['sucesso' => $success], $this-> successStatus);
         } else {
             return response()->json(['erro'=>'Nao autorizado'], $this-> notAuthorizedStatus);
@@ -48,7 +49,7 @@ class UserController extends Controller
         }
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
-        $input['group_id'] = 2;
+        $input['group_id'] = 2;//by default its in the member group
         $user = User::create($input);
         $success['token'] =  $user->createToken('MyApp')-> accessToken;
         $success['name'] =  $user->name;

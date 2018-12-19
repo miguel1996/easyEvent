@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function myEvents()
+    public function eventManagement()
     {
         $user = Auth::user();
         if($user){
