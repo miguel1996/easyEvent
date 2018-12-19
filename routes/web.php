@@ -42,4 +42,3 @@ Route::group(['middleware' => 'App\Http\Middleware\EventManagerMiddleware'], fun
     Route::post('/events','EventController@create');
 
 });
-
