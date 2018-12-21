@@ -29,38 +29,88 @@ $(document).ready(function(){
 
 });
 
-$("#event_date").change(function(){
-    
-    if(!checkDate($(this).val(), Date(), "Data de início do evento tem de ser superior a data atual")){
-        $(this).css({ "border-color": "red" });
-    }else
-    {
-        $(this).css({ "border-color": "green" });
-    }
-           
+$("#event_date").change(function(){   
+    validateDate();
 });
 
 $("#opening_subscription_date").change(function() {
-    if (!checkDate($("#event_date").val(), $(this).val(), "Data da subscrição, superior ou igual a data do evento!")) {
-        $(this).css({ "border-color": "red" });
-    } else {
-        $(this).css({ "border-color": "green" });
-    }
+    validateDate();
 });
 
 $("#closing_subscription_date").change(function() {
-    if (!checkDate($("#opening_subscription_date").val(), $(this).val(), "Data de início da subscrição, superior ou igual a data do fim!")) {
-        $(this).css({ "border-color": "red" });
-    } else {
-        $(this).css({ "border-color": "green" });
-    }
+    validateDate();
 });
 
+function validateDate(){
+
+    if ($("#event_date").val() == ""){
+        console.log("Valor Nulo");
+    }else{
+
+        if (!checkDate($("#event_date").val(), Date(), "Data do evento tem de ser superior a data atual")) {
+            $("#event_date").css({
+                "border-color": "red",
+                "background-color": "#FDD"
+            });
+            $("#event_date_error_box").css("display", "block");
+            $("#event_date_error").text("Data do evento tem de ser superior a data atual!");
+        } else {
+            $("#event_date").css({
+                "border-color": "green",
+                "background-color": "white"
+            });
+            $("#event_date_error").text("");
+            $("#event_date_error_box").css("display", "none");
+        }
+    }
+
+    if ($("#opening_subscription_date").val() == "") {
+        console.log("Valor Nulo");
+    } else {
+        if (!checkDate($("#event_date").val(), $("#opening_subscription_date").val(), "Data de abertura da subscrição, deve ser inferior a data do evento")) {
+            $("#opening_subscription_date").css({
+                "border-color": "red",
+                "background-color": "#FDD"
+            });
+            $("#opening_subscription_date_error_box").css("display", "block");
+            $("#opening_subscription_date_error").text("Data de abertura da subscrição, deve ser inferior a data do evento!");
+        } else {
+            $("#opening_subscription_date").css({
+                "border-color": "green",
+                "background-color": "white"
+            });
+            $("#opening_subscription_date_error").text("");
+            $("#opening_subscription_date_error_box").css("display", "none");
+        }
+    }
+
+    if ($("#closing_subscription_date").val() == "") {
+        console.log("Valor Nulo");
+    } else {
+        if (!checkDate($("#closing_subscription_date").val(), $("#opening_subscription_date").val(), "Data de fecho da subscrição, deve ser superior a data de abertura")
+            || !checkDate($("#event_date").val(), $("#closing_subscription_date").val(), "Data de fecho da subscrição, deve ser inferior a data do evento") ){
+            $("#closing_subscription_date").css({
+                "border-color": "red",
+                "background-color": "#FDD"
+            });
+            $("#closing_subscription_date_error_box").css("display", "block");
+            $("#closing_subscription_date_error").text("Data de fecho da subscrição, deve ser superior a data de abertura!");
+        } else {
+            $("#closing_subscription_date").css({
+                "border-color": "green",
+                "background-color": "white"
+            });
+            $("#closing_subscription_date_error").text("");
+            $("#closing_subscription_date_error_box").css("display", "none");
+        }
+    }
+
+}
 
 function checkDate(startDt, endDt, message) {
     if (new Date(startDt).getTime() <= new Date(endDt).getTime()) {
         // Your code here
-        alert(message);
+        // alert(message);
         
         return false;
     } else {

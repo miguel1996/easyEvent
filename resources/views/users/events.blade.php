@@ -24,11 +24,23 @@
                         <br>
                         img: <input type="file" name="event_photo" title="Event Photo">
                         <br>
-                        date and time of the event: <input type="datetime-local" name="event_date" id="event_date">
+                        date and time of the event: <br> 
+                        <input type="datetime-local" name="event_date" id="event_date"> 
+                        <div id="event_date_error_box" class="error" style="display:none"><br>
+                        <span id="event_date_error" aria-live="polite"></span>
+                        </div>
                         <br>
-                        opening subscription date: <input type="datetime-local" name="opening_subscription_date" id="opening_subscription_date">
+                        opening subscription date: <br>
+                        <input type="datetime-local" name="opening_subscription_date" id="opening_subscription_date">
+                        <div id="opening_subscription_date_error_box" class="error" style="display:none"><br>
+                        <span id="opening_subscription_date_error" aria-live="polite"></span>
+                        </div>
                         <br>
-                        closing subscription date: <input type="datetime-local" name="closing_subscription_date" id="closing_subscription_date">
+                        closing subscription date: <br>
+                        <input type="datetime-local" name="closing_subscription_date" id="closing_subscription_date">
+                        <div id="closing_subscription_date_error_box" class="error" style="display:none"><br>
+                        <span id="closing_subscription_date_error" aria-live="polite"></span>
+                        </div>
                         <br>
                     </div>
                     <div class="card-header">Event Elements</div>

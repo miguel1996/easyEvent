@@ -2,7 +2,7 @@ html, body {
     background-image: url('/images/media/background19.jpg');
     background-repeat: no-repeat;
     background-position: center center fixed;
-    background-size: 100% auto; 
+    background-size: 100% auto;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
     font-weight: 200;
@@ -33,7 +33,7 @@ html, body {
 
 .content {
     text-align: center;
-    width: 60%; 
+    width: 60%;
 }
 
 .title {
@@ -43,7 +43,7 @@ html, body {
     color: white;
 }
 
-.links > a{
+.links>a {
     color: white;
     padding: 0 25px;
     font-size: 13px;
@@ -53,13 +53,13 @@ html, body {
     text-transform: uppercase;
 }
 
-.links > a:hover, .links > button:hover{
+.links>a:hover, .links>button:hover {
     color: #353137;
     background-color: white;
     text-decoration: none;
 }
 
-.links{
+.links {
     background-color: #353137;
     padding: 5px;
     border: double 3px white;
@@ -69,7 +69,7 @@ html, body {
     margin-bottom: 30px;
 }
 
-.card-header, .card-body{
+.card-header, .card-body {
     width: 70%;
     margin-left: auto;
     margin-right: auto;
@@ -78,21 +78,21 @@ html, body {
     margin-bottom: 0;
 }
 
-.card-header{
-    background-color: #353137; 
+.card-header {
+    background-color: #353137;
     color: white;
     text-align: center;
     border: solid 3px #353137;
     margin-top: 30px;
 }
 
-.card-header > h4{
+.card-header>h4 {
     margin: 0px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.register{
+.register {
     font-size: 12pt;
     text-align: center;
     width: 10%;
@@ -102,7 +102,7 @@ html, body {
     color: white;
 }
 
-.navbar{
+.navbar {
     color: white;
     background-color: #353137;
     border-color: white;
@@ -114,7 +114,7 @@ html, body {
     align-items: center;
 }
 
-.navbar a{
+.navbar a {
     display: inline-block;
     padding: 5px;
     margin-left: 5px;
@@ -126,16 +126,16 @@ html, body {
     font-size: 1.125rem;
 }
 
-.navbar a:hover{
+.navbar a:hover {
     background-color: white;
     color: #353137;
 }
 
-.active{
-    border-bottom: solid 2px white !important;    
+.active {
+    border-bottom: solid 2px white !important;
 }
 
-.card-body{
+.card-body {
     background-color: white;
     color: #353137;
     padding: 15px;
@@ -145,7 +145,8 @@ html, body {
 }
 
 /*Imagem à esquerda, altura limitada*/
-.card-body img{
+
+.card-body img {
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -157,20 +158,20 @@ html, body {
     border: double 3px black;
 }
 
-.card-body li{
+.card-body li {
     list-style-type: none;
 }
 
-.card-text{
+.card-text {
     text-align: justify;
 }
 
-.card-text .extra{
+.card-text .extra {
     text-align: right;
     display: none;
 }
 
-#subtitle{
+#subtitle {
     background-color: #353137;
     color: white;
     margin-top: 30px;
@@ -182,38 +183,56 @@ html, body {
     border: double 3px white;
 }
 
-#login{
+#login {
     width: 50%;
     margin: auto;
     margin-top: 10%;
 }
 
-.card-body .row{
+.card-body .row {
     text-align: center;
     margin-bottom: 10px;
 }
 
-.card-body input:not(.form-check-input){
+.card-body input:not(.form-check-input) {
     width: 50%;
     height: 22px;
 }
 
-button{
+button {
     background-color: #353137;
     color: white;
     border: none;
 }
 
-button:hover{
+button:hover {
     background-color: white;
     color: #353137;
 }
 
-#submit-button{
+#submit-button {
     margin-left: auto;
     margin-right: auto;
 }
 
-.register > button{
+.register>button {
     width: 100%;
+}
+
+/* This is the style of our error messages */
+
+.error {
+    width: 50%;
+    padding: 0;
+    font-size: 80%;
+    color: white;
+    background-color: #900;
+    border-radius: 0 0 5px 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+input.invalid {
+    border-color: #900;
+    background-color: #FDD;
 }
