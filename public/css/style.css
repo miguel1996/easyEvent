@@ -209,6 +209,7 @@ button, .btn{
 button:hover, .btn:hover{
     background-color: white;
     color: #353137;
+    cursor: pointer;
 }
 
 #submit-button{
