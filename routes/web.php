@@ -25,11 +25,13 @@ Route::post('/events/{id}/regist/', 'EventController@registUser');
 
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function () {
-    
-    Route::get('/admin',function () {
+    Route::get(
+        '/admin',
+        function () {
             return view('admin.index');
         }
     );
+    Route::get('/admin/users', 'Admin\UserController@index');
 
 });
 
