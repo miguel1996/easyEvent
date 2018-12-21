@@ -31,7 +31,9 @@
 </div>
 <div id="events" class="flex-center position-ref">
     <div class="col-md-8">
+        @php ($i = 0)
         @foreach($events as $event)
+        @php ($i++)
         <div class="card">
             <div class="card-header"><h4>{{$event->title}}</h4></div>
             <div class="card-body">
@@ -40,13 +42,13 @@
                 </div>
                 <div class="card-text">
                     <p>{{$event->description}}</p>
-                    <div class="extra">
+                    <div id="extra{{$i}}" class="extra">
                         <p>Subscription open until {{$event->closing_subscription_date}}</p>
                         <p>Event date: {{$event->event_date}}</p>
                         <p>Click <a href="/events/{{$event->id}}">here</a> to register</p>
                     </div>
                     <div class="register links">
-                        <button type="button" onclick="displayHiddenContent()">More</button><!--Tens um problema aqui, podes tentar resolver com um id autoincremental e usar esse id para fazer o display de apenas esse elemento-->
+                        <button type="button" onclick="displayHiddenContent('{{$i}}')">More</button><!--Tens um problema aqui, podes tentar resolver com um id autoincremental e usar esse id para fazer o display de apenas esse elemento-->
                     </div>
                 </div>
             </div>
