@@ -31,6 +31,12 @@
                                 @foreach($sub->elements as $element)
                                     {{$element->label}}->{{$element->type}}<br>
                                 @endforeach
+                                <br>
+                                <form action="/subscriptions/delete" method="POST">
+                                @csrf
+                                    <input type="hidden" value="{{$sub->id}}" name="event_id">
+                                    <input type="submit" value="cancelar esta merda">
+                                </form>
                                 <br><br><br>
                         @endforeach
                    </ul>

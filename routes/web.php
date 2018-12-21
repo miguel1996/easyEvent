@@ -10,20 +10,24 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//root route
 Route::get('/', 'WelcomeController@index');
 
 Auth::routes();
 
-Route::get('/subscriptions', 'SubscriptionController@index');
+//home
 Route::get('/home', 'HomeController@index');
 
-Route::get('/events', 'EventController@index');
+//subscriptions routes
+Route::get('/subscriptions', 'SubscriptionController@index');
+Route::post('/subscriptions/delete','SubscriptionController@cancel');
 
+//events routes
+Route::get('/events', 'EventController@index');
 Route::get('/events/{id}', 'EventController@show');
 Route::post('/events/{id}/regist/', 'EventController@registUser');
 
-
+//admin only routes
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function () {
     Route::get(
         '/admin',
@@ -32,10 +36,10 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function (
         }
     );
 });
-Route::get('/admin/users', 'Admin\UserController@index');
+Route::get('/admin/users', 'Admin\UserController@index');   //must be inside admin middleware
 Route::post('/admin/users/','Admin\UserController@registUser');//must be inside admin middleware
 
-
+//event manager/admin only routes
 Route::group(['middleware' => 'App\Http\Middleware\EventManagerMiddleware'], function () {//only admins and event managers can do this
     Route::get('/user/events', 'UserController@eventManagement');
     Route::post('/events', 'EventController@create');

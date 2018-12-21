@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Event;
 
 class SubscriptionController extends Controller
 {
@@ -83,8 +84,18 @@ class SubscriptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function cancel(Request $request)
     {
-        //
+        $user = Auth::user();
+        if ($event = Event::find($request->event_id)) {
+            if ($user->events()->detach($request->event_id)) {
+                $request->session()->flash('status', 'subscrição do evento '.$request->event_id.' cancelada com sucesso');
+            } else {
+                $request->session()->flash('status', 'Erro ao cancelar a subscrição');
+            }
+        }else{
+            $request->session()->flash('status', 'Evento nao existente');
+        }
+        return redirect('/subscriptions');
     }
 }
