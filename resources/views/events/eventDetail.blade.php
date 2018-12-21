@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    {{$event->title}}
+                    <h4>{{$event->title}}</h4>
                 </div>
                 <div class="card-body">
                     <ul>
@@ -18,14 +18,16 @@
                             @foreach($event->elements as $element)
                             <br>
                             <li>
-                                <input type="{{$element->type}}" name="element{{$element->id}}" required> 
                                 {{$element->label}}
+                                <input type="{{$element->type}}" name="element{{$element->id}}" required> 
                             </li>
                             @endforeach
                             <br>
                             <li>  
                                 @csrf
-                                <input type="submit" value="Attend to this event" class="btn btn-primary">
+                                <div class="register links">
+                                    <input type="submit" value="Attend" class="btn">
+                                </div>
                             </li>
                         </form>
                     </ul>
