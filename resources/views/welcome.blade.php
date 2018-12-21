@@ -24,16 +24,11 @@
 <script type= "text/javascript">
     $(document).ready(function(){$("#home-button").addClass("active");});
 </script>
-<div id="title" class="flex-center position-ref">
+<div id="subtitle" class="flex-center position-ref">
     <div class="col-md-8">
-        <div class="card">
-            <div class="card-header">
-                <h1>Events Open for Subscription</h1>
-            </div>
-        </div>
+        <h1>Available Subscriptions</h1>
     </div>
 </div>
-<br>
 <div id="events" class="flex-center position-ref">
     <div class="col-md-8">
         @foreach($events as $event)
@@ -43,21 +38,19 @@
                 <div class="card-image">
                     <img src="/images/event_photos/{{$event->image_path}}">
                 </div>
-                <br>
                 <div class="card-text">
                     <p>{{$event->description}}</p>
                     <div class="extra">
                         <p>Subscription open until {{$event->closing_subscription_date}}</p>
                         <p>Event date: {{$event->event_date}}</p>
-                        <p>Click <a href="">here</a> to register</p>
+                        <p>Click <a href="/events/{{$event->id}}">here</a> to register</p>
                     </div>
                     <div class="register links">
-                        <button type="button" onclick="displayHiddenContent()">More</button><!--Tens um problema aqui-->
+                        <button type="button" onclick="displayHiddenContent()">More</button><!--Tens um problema aqui, podes tentar resolver com um id autoincremental e usar esse id para fazer o display de apenas esse elemento-->
                     </div>
                 </div>
             </div>
         </div>
-        <br>
         @endforeach
     </div>
 </div>

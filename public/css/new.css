@@ -69,27 +69,10 @@ html, body {
     margin-bottom: 30px;
 }
 
-.card-header, .card-body{
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-bottom: 0;
-}
-
 .card-header{
     background-color: #353137; 
     color: white;
     text-align: center;
-    border: solid 3px #353137;
-    margin-top: 30px;
-}
-
-.card-header > h4{
-    margin: 0px;
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
 
 .register{
@@ -102,46 +85,28 @@ html, body {
     color: white;
 }
 
-.navbar{
+.navbar, a.nav-link, a.navbar-brand, a#navbarDropdown, .dropdown-menu, .dropdown-item, .btn, .btn-link{
     color: white;
     background-color: #353137;
     border-color: white;
     text-decoration: none;
+    padding-left: 4px; 
+    padding-right: 4px;
+}
+
+.navbar{
     position: sticky;
     top: 0;
     z-index: 1;
-    padding: 10px 50px 45px 50px;
-    align-items: center;
 }
 
-.navbar a{
-    display: inline-block;
-    padding: 5px;
-    margin-left: 5px;
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 1.125rem;
-}
-
-.navbar a:hover{
+a.nav-link:hover, a.navbar-brand:hover, a#navbarDropdown:hover, .dropdown-item:hover{
     background-color: white;
     color: #353137;
 }
 
 .active{
     border-bottom: solid 2px white !important;    
-}
-
-.card-body{
-    background-color: white;
-    color: #353137;
-    padding: 15px;
-    overflow: hidden;
-    border: solid 3px #353137;
-    border-top: none;
 }
 
 /*Imagem à esquerda, altura limitada*/
@@ -168,6 +133,64 @@ html, body {
 .card-text .extra{
     text-align: right;
     display: none;
+}
+
+
+/***********************/
+
+
+.navbar{
+    padding-top: 10px;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-bottom: 45px;
+    align-items: center;
+}
+
+.navbar a{
+    display: inline-block;
+    padding: 5px;
+    margin-left: 5px;
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.125rem;
+}
+
+.navbar a:hover{
+    background-color: white;
+    color: #353137;
+}
+
+.card-header, .card-body{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 0;
+}
+
+.card-header > h4{
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.card-header{
+    border: solid 3px #353137;
+    margin-top: 30px;
+}
+
+.card-body{
+    background-color: white;
+    color: #353137;
+    padding: 15px;
+    overflow: hidden;
+    border: solid 3px #353137;
+    border-top: none;
 }
 
 #subtitle{
