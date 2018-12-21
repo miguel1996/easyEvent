@@ -34,8 +34,19 @@ Route::group(['middleware' => 'auth:api'], function () {
 Route::get('documentation', function(){
     foreach (Route::getRoutes()->getIterator() as $route){
         if (strpos($route->uri, 'api') !== false){
-            $routes[] = $route;
+            if(in_array('GET',$route->methods)){
+                $get_routes[] = $route->uri;
+            }
+            else if(in_array('POST',$route->methods)){
+                $post_routes[] = $route->uri;
+            }
+            //$routes[] = $route->uri;
         }
     }
-    return response()->json(['routes' => $routes], 200);
+    return response()->json([
+        'info'=> ["to make an authenticated request you must insert 2 headers",
+            ["Accept: application/json","Authorization: Bearer <put here the token from the login or register post request>"]],
+        'get routes' => $get_routes,
+        'post_routes' => $post_routes
+    ], 200);
 });
