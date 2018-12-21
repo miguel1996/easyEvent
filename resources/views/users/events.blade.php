@@ -57,6 +57,7 @@
         </div>
     </div>
 </div>
+<div id="subtitle"><h1>My Events</h1></div>
 @foreach($myEvents as $event)
 <div class="container">
     <div class="card">
