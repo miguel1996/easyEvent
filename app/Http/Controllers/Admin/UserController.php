@@ -32,12 +32,13 @@ class UserController extends Controller
             'group_id' => ['required','integer'],
         ]);
         if ($validator->fails()) {
-            return response()->json(['error'=>$validator->errors()], 401);  //isto é temporário
+            return redirect()->back()->withErrors($validator->errors());
         }
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        return response()->json(['success'=>$user], 200);   //isto é temporario
+        $request->session()->flash('status', 'registered new user!');
+        return redirect()->back();
     }
     
 }

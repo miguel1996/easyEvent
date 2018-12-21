@@ -9,10 +9,19 @@
 @section('content')
 <div class="card">
 	<div class="card-header">
-		<h4>Create User</h4>
+	<h4><a href="/admin/users">Show all Users</a></h4>
 	</div>
-	<div class="card-body">
+	<!-- <div class="card-body">
 		
+	</div> -->
+</div>
+
+<div class="card">
+	<div class="card-header">
+	<h4><a href="/admin/users/register">Register a new User</a></h4>
 	</div>
+	<!-- <div class="card-body">
+		
+	</div> -->
 </div>
 @endsection
