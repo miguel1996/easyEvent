@@ -13,11 +13,8 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('/ee', function () {
-    return view('/layouts.layout');
-});
-
 Auth::routes();
+
 Route::get('/subscriptions', 'SubscriptionController@index');
 Route::get('/home', 'HomeController@index');
 
@@ -28,11 +25,12 @@ Route::post('/events/{id}/regist/', 'EventController@registUser');
 
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function () {
-    Route::get('/admin',
-        function () {
+    
+    Route::get('/admin',function () {
             return view('admin.index');
         }
     );
+
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\EventManagerMiddleware'], function () {//only admins and event managers can do this
