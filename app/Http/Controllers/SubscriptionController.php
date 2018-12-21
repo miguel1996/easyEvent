@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Event;
+use Carbon\Carbon;
 
 class SubscriptionController extends Controller
 {
@@ -88,10 +89,14 @@ class SubscriptionController extends Controller
     {
         $user = Auth::user();
         if ($event = Event::find($request->event_id)) {
-            if ($user->events()->detach($request->event_id)) {
-                $request->session()->flash('status', 'subscrição do evento '.$request->event_id.' cancelada com sucesso');
-            } else {
-                $request->session()->flash('status', 'Erro ao cancelar a subscrição');
+            if ($event->closing_subscription_date > Carbon::now()) {
+                if ($user->events()->detach($request->event_id)) {
+                    $request->session()->flash('status', 'subscrição do evento '.$request->event_id.' cancelada com sucesso');
+                } else {
+                    $request->session()->flash('status', 'Erro ao cancelar a subscrição');
+                }
+            }else{
+                $request->session()->flash('status', 'data de fecho ja passou');
             }
         }else{
             $request->session()->flash('status', 'Evento nao existente');
