@@ -61,11 +61,10 @@ function checkDate(startDt, endDt, message) {
     if (new Date(startDt).getTime() <= new Date(endDt).getTime()) {
         // Your code here
         alert(message);
-        console.log(Date());
+        
         return false;
     } else {
-        console.log("start bigger than end dt");
-        console.log(Date());
+       
         return true;
     }
 }
