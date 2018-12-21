@@ -19,7 +19,7 @@ $(document).ready(function(){
                 $([
                     document.documentElement,
                     document.body
-                ]).animate({ scrollTop: $("#addElement").offset().top }, 1); //this blocked with 2000 instead of 1
+                ]).animate({ scrollTop: $("#enumSelect"+numElements).offset().top -200 }, 1); //this blocked with 2000 instead of 1
                 $("#numOfElements").val(numElements);
             });
         };

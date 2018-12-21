@@ -16,11 +16,13 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('description');
+            $table->string('description',600);
             $table->string('image_path');
             $table->dateTime('event_date'); //data e hora em que vai comecar o evento
             $table->dateTime('opening_subscription_date');    //date e hora em que podemos comecar a nos inscrever no evento
             $table->dateTime('closing_subscription_date');  //data e hora em que acaba as inscrições para o evento
+            $table->integer('user_id')->unsigned()->index();
+            $table->foreign('user_id')->references('id')->on('users');//->onDelete('cascade');
             $table->timestamps();
         });
     }

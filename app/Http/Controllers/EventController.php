@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Event;
 use App\Element;
@@ -20,12 +21,9 @@ class EventController extends Controller
     {
         $user = Auth::user();
         if ($user) {
-            $table = 'elements';
-            $columns = DB::select("SHOW COLUMNS FROM ". $table." WHERE Field = 'type'");
-            preg_match("/^enum\(\'(.*)\'\)$/", $columns[0]->Type, $matches);
-            $enum = explode("','", $matches[1]); //in $enum are all input types for an element
-            $events = Event::all();
-            return view('events.events', compact('events', 'enum'));
+            $events = Event::where('event_date','>=', Carbon::now())
+            ->get();
+            return view('events.events', compact('events'));
         } else {
             return redirect('/');
         }
@@ -41,7 +39,7 @@ class EventController extends Controller
         $user = Auth::user();
         if ($user) {
             //DB::transaction: rollbacks if any exception occurs
-        $transaction_result = DB::transaction(function () use ($request) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
+        $transaction_result = DB::transaction(function () use ($request,$user) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
         $result_create_elements = app('App\Http\Controllers\ElementController')->create($request);
             if (!$result_create_elements[0]) {
                 return false;//dd("erro ao inserir elementos");
@@ -57,6 +55,7 @@ class EventController extends Controller
             $event->event_date = $request->event_date;
             $event->opening_subscription_date = $request->opening_subscription_date;
             $event->closing_subscription_date = $request->closing_subscription_date;
+            $event->user_id = $user->id;
             if (!$event->save()) {
                 return false;//dd("erro ao criar o evento");
             }
@@ -69,6 +68,7 @@ class EventController extends Controller
             return dd("erro ao criar o evento");
         }
         else{
+            
             return redirect('/events');
         }
         //fim de if($user)
@@ -77,14 +77,21 @@ class EventController extends Controller
         }
     }
 
-    public function registUser($id)
+    public function registUser(Request $request,$id)
     {
         $user = Auth::user();
         if ($user) {
+            $event = Event::find($id);
+            $subscription_elements_data = array();
+            foreach($event->elements as $element)
+            {
+                $subscription_elements_data = array_add($subscription_elements_data,$element->id,$request->input('element'.$element->id));
+            }
+            $serialized_data = serialize($subscription_elements_data);
             //DB::transaction: rollbacks if any exception occurs
-       $transaction_result = DB::transaction(function () use ($id,$user) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
+       $transaction_result = DB::transaction(function () use ($id,$user,$serialized_data) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
             if (!$user->events->contains($id)) {
-                $user->events()->attach($id, ['data' => "dados serializados"]);
+                $user->events()->attach($id, ['data' => $serialized_data]);
             }
            return true;//redirect('events');
        });
@@ -94,6 +101,7 @@ class EventController extends Controller
         if (!$transaction_result) {
             return redirect('/');
         } else {
+            $request->session()->flash('status', 'Task was successful!');
             return redirect('/events/'.$id);
         }
     }
