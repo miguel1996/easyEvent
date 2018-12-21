@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Event;
 use App\Element;
@@ -20,12 +21,9 @@ class EventController extends Controller
     {
         $user = Auth::user();
         if ($user) {
-            $table = 'elements';
-            $columns = DB::select("SHOW COLUMNS FROM ". $table." WHERE Field = 'type'");
-            preg_match("/^enum\(\'(.*)\'\)$/", $columns[0]->Type, $matches);
-            $enum = explode("','", $matches[1]); //in $enum are all input types for an element
-            $events = Event::all();
-            return view('events.events', compact('events', 'enum'));
+            $events = Event::where('event_date','>=', Carbon::now())
+            ->get();
+            return view('events.events', compact('events'));
         } else {
             return redirect('/');
         }
@@ -70,6 +68,7 @@ class EventController extends Controller
             return dd("erro ao criar o evento");
         }
         else{
+            
             return redirect('/events');
         }
         //fim de if($user)
@@ -102,6 +101,7 @@ class EventController extends Controller
         if (!$transaction_result) {
             return redirect('/');
         } else {
+            $request->session()->flash('status', 'Task was successful!');
             return redirect('/events/'.$id);
         }
     }

@@ -18,20 +18,24 @@ Route::get('/ee', function () {
 });
 
 Auth::routes();
-Route::get('/subscriptions','SubscriptionController@index');
-Route::get('/home','HomeController@index');
+Route::get('/subscriptions', 'SubscriptionController@index');
+Route::get('/home', 'HomeController@index');
 
-Route::get('/events','EventController@index');
-Route::post('/events','EventController@create');
-Route::get('/events/{id}','EventController@show');
-Route::post('/events/{id}/regist/','EventController@registUser');
+Route::get('/events', 'EventController@index');
 
-Route::get('/user/events','UserController@myEvents');
-Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
-{
-    Route::get('/admin', function()
-    {
-        dd("adminnn");
-    });
+Route::get('/events/{id}', 'EventController@show');
+Route::post('/events/{id}/regist/', 'EventController@registUser');
 
+
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function () {
+    Route::get('/admin',
+        function () {
+            return view('admin.index');
+        }
+    );
+});
+
+Route::group(['middleware' => 'App\Http\Middleware\EventManagerMiddleware'], function () {//only admins and event managers can do this
+    Route::get('/user/events', 'UserController@eventManagement');
+    Route::post('/events', 'EventController@create');
 });
