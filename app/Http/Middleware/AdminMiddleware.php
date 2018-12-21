@@ -21,6 +21,7 @@ class AdminMiddleware
                 return $next($request);
             }
         }
+        $request->session()->flash('status',"You don't have Admin permissions");
         return redirect('/');
     }
 }

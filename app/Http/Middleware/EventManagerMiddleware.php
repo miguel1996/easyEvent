@@ -21,6 +21,7 @@ class EventManagerMiddleware
                 return $next($request);
             }
         }
+        $request->session()->flash('status',"You don't have Event Manager permissions");
         return redirect('/');
     }
 }
