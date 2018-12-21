@@ -31,9 +31,10 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function (
             return view('admin.index');
         }
     );
-    Route::get('/admin/users', 'Admin\UserController@index');
-
 });
+Route::get('/admin/users', 'Admin\UserController@index');
+Route::post('/admin/users/','Admin\UserController@registUser');//must be inside admin middleware
+
 
 Route::group(['middleware' => 'App\Http\Middleware\EventManagerMiddleware'], function () {//only admins and event managers can do this
     Route::get('/user/events', 'UserController@eventManagement');
