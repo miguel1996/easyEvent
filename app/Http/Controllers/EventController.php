@@ -89,9 +89,13 @@ class EventController extends Controller
             }
             $serialized_data = serialize($subscription_elements_data);
             //DB::transaction: rollbacks if any exception occurs
-       $transaction_result = DB::transaction(function () use ($id,$user,$serialized_data) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
+       $transaction_result = DB::transaction(function () use ($id,$user,$serialized_data,$request) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
             if (!$user->events->contains($id)) {
                 $user->events()->attach($id, ['data' => $serialized_data]);
+                $request->session()->flash('status', 'Successfully subscribed to this event!');
+            }
+            else{
+                $request->session()->flash('status', 'You are already subscribed to this event!');
             }
            return true;//redirect('events');
        });
@@ -99,9 +103,9 @@ class EventController extends Controller
             return false;//redirect('/'); if it is not an autenticated user, we get redirected to the root endpoint
         }
         if (!$transaction_result) {
+            $request->session()->flash('status', 'Error subscribing to the event!');
             return redirect('/');
-        } else {
-            $request->session()->flash('status', 'Task was successful!');
+        } else {        
             return redirect('/events/'.$id);
         }
     }
