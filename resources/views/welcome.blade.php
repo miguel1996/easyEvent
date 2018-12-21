@@ -48,7 +48,7 @@
                         <p>Click <a href="/events/{{$event->id}}">here</a> to register</p>
                     </div>
                     <div class="register links">
-                        <button type="button" onclick="displayHiddenContent('{{$i}}')">More</button><!--Tens um problema aqui, podes tentar resolver com um id autoincremental e usar esse id para fazer o display de apenas esse elemento-->
+                        <button id="more-button{{$i}}" value="0" type="button" onclick="displayHiddenContent('{{$i}}')">More</button><!--Tens um problema aqui, podes tentar resolver com um id autoincremental e usar esse id para fazer o display de apenas esse elemento-->
                     </div>
                 </div>
             </div>
