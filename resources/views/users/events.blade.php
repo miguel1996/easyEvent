@@ -89,6 +89,11 @@
                     </li>
                     @endforeach
                 </ul>
+                <li>
+                    <a href="/user/events/{{$event->id}}">
+                        <button id="details_button" type="button">Manage</button><!--Tens um problema aqui, podes tentar resolver com um id autoincremental e usar esse id para fazer o display de apenas esse elemento-->
+                        </a>
+                </li> 
             </ul>
         </div>
     </div>

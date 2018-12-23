@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function eventManagement()
+    public function myEventsManagement()
     {
         $user = Auth::user();
         if($user){
@@ -22,5 +22,12 @@ class UserController extends Controller
         }else{
             return redirect('/');
         }
+    }
+
+    public function eventManagement($id)
+    {
+        $event = Event::find($id);
+        $subscriptions = $event->users()->get();
+        return view('users.eventManagement',compact('event','subscriptions'));
     }
 }

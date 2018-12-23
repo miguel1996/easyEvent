@@ -37,12 +37,13 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function (
     );
     Route::get('/admin/users', 'Admin\UserController@index');   //must be inside admin middleware
 
-Route::get('/admin/users/register',function (Request $request) { return view('admin.users.register',compact('request'));});//must be inside admin middleware
-Route::post('/admin/users/register','Admin\UserController@registUser');//must be inside admin middleware
+Route::get('/admin/users/register',function (Request $request) { return view('admin.users.register',compact('request'));});
+Route::post('/admin/users/register','Admin\UserController@registUser');
 });
 
 //event manager/admin only routes
 Route::group(['middleware' => 'App\Http\Middleware\EventManagerMiddleware'], function () {//only admins and event managers can do this
-    Route::get('/user/events', 'UserController@eventManagement');
+    Route::get('/user/events/{id}', 'UserController@eventManagement');
+    Route::get('/user/events', 'UserController@myEventsManagement');
     Route::post('/events', 'EventController@create');
 });
