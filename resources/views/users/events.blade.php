@@ -24,6 +24,19 @@
                         <br>
                         img: <input type="file" name="event_photo" title="Event Photo">
                         <br>
+                        Forecast Região Autónoma da Madeira:<table>
+                        @foreach($data->list as $val)
+                        @php($date = gmdate("d-m-Y->H:m A",$val->dt))
+                        @php($dateCmp = gmdate("H",$val->dt))
+                        @php($weather = $val->weather)
+                        @if (strcmp($dateCmp,"12") == 0)
+                        <tr><td>
+                        {{$date}}</td><td>{{$val->main->temp}} ºC</td><td> <img src="http://openweathermap.org/img/w/{{$weather[0]->icon}}.png" alt="{{$weather[0]->description}}" title="{{$weather[0]->description}}"> 
+                        </td></tr>
+                        @endif
+                        @endforeach
+                        </table>
+                        <br>
                         date and time of the event: <br> 
                         <input type="datetime-local" name="event_date" id="event_date"> 
                         <div id="event_date_error_box" class="error" style="display:none"><br>
