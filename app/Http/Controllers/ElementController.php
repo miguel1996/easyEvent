@@ -27,13 +27,15 @@ class ElementController extends Controller
         $elements = array();
         $numOfElements = $request->numOfElements;
         for($i = 1;$i<=$numOfElements;$i++){         
-            $element = new Element;
-            $element->label = $request->input('label'.$i);
-            $element->type = $request->input('enumSelect'.$i);
-            if(!$element->save()){   //realiza o insert e caso exista algum erro ao inserir a funcção devolve false
-                $boolAllElementsSaved = false;
-            }else{
-                array_push($elements,$element->id);
+            if ($request->has('label'.$i, 'enumSelect'.$i)) {
+                $element = new Element;
+                $element->label = $request->input('label'.$i);
+                $element->type = $request->input('enumSelect'.$i);
+                if (!$element->save()) {   //realiza o insert e caso exista algum erro ao inserir a funcção devolve false
+                    $boolAllElementsSaved = false;
+                } else {
+                    array_push($elements, $element->id);
+                }
             }
         }
 

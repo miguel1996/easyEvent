@@ -8,25 +8,30 @@ $(document).ready(function(){
 
             console.log(numElements);
             numElements++;
-
             //will append a list of the possible enums and the necessary fields to insert an extra element to the event subscription
-            $("#fields_zone").append("Extra field " + numElements + ': <input id="field' + numElements + '" type="text" name="label' + numElements + '" required pattern="[a-z A-Z]{4,}">' + " ");
-            $("#fields_zone").append("Extra field type " + numElements + ':<select id="enumSelect' + numElements + '" name="enumSelect' + numElements + '" required></select><br><br>');
+            $("#fields_zone").append("<span class='text"+numElements+"'><br><br>Extra field " + numElements + ': </span><input id="field' + numElements + '" type="text" name="label' + numElements + '" required pattern="[a-z A-Z]{4,}">' + " ");
+            $("#fields_zone").append("<span class='text"+numElements+"'>Extra field type " + numElements + ':</span><select id="enumSelect' + numElements + '" name="enumSelect' + numElements + '" required></select>');
             $("#enumSelect" + numElements).append('<option style="display:none">' + "</option>");
             $(".enums").each(function () {
                 $("#enumSelect" + numElements).append("<option value=" + $(this).attr("value") + ">" + $(this).attr("value") + "</option>");
-                // the page will scroll to the button so that when we add an element we can see the part of the page that was updated
-                $([
-                    document.documentElement,
-                    document.body
-                ]).animate({ scrollTop: $("#enumSelect"+numElements).offset().top -200 }, 1); //this blocked with 2000 instead of 1
-                $("#numOfElements").val(numElements);
             });
+            $("#fields_zone").append("<button type='button' class='deleteFieldButton' value='"+numElements+"' id='deleteField"+numElements+"'>X</button>");
+            // the page will scroll to the button so that when we add an element we can see the part of the page that was updated
+            $([
+                document.documentElement,
+                document.body
+            ]).animate({ scrollTop: $("#enumSelect"+numElements).offset().top -200 }, 1); //this blocked with 2000 instead of 1
+            $("#numOfElements").val(numElements);
         };
     });
-
-    
-
+    //.click nao funciona em elementos que sao adicionados mais tarde ao DOM. é preciso usar .on("click")
+    $("#fields_zone").on("click",".deleteFieldButton",function () {
+        // alert($(this).val());
+        $("#field" + $(this).val()).remove();//not numElements but $this.val()
+        $("#enumSelect" + $(this).val()).remove();
+        $("#deleteField"+$(this).val()).remove();
+        $(".text"+$(this).val()).remove();
+    });
 });
 
 $("#event_date").change(function(){   
