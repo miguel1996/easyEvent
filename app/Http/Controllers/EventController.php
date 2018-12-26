@@ -85,8 +85,21 @@ class EventController extends Controller
             $subscription_elements_data = array();
             foreach($event->elements as $element)
             {
-                $subscription_elements_data = array_add($subscription_elements_data,$element->id,$request->input('element'.$element->id));
+                switch ($element->type) {
+                    case 'file':
+                    $file = $request->file('element'.$element->id);
+                    $filename = time().'-'.$file->getClientOriginalName();
+                    $file = $file->move('images/subscriptions/files', $filename);
+                    $value = $filename;
+                    break;
+
+                    default:
+                    $value = $request->input('element'.$element->id);
+                        break;
+                }
+                $subscription_elements_data = array_add($subscription_elements_data,$element->id,$value);
             }
+
             $serialized_data = serialize($subscription_elements_data);
             //DB::transaction: rollbacks if any exception occurs
        $transaction_result = DB::transaction(function () use ($id,$user,$serialized_data,$request) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope

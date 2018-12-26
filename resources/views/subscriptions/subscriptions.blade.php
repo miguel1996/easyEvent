@@ -22,7 +22,12 @@
                             <!-- unserialize the data first so that it gets stored as an array -->
                             pivot table:  <br> @foreach($unserializedData as $key => $value)
                             @php($element = \App\Element::find($key))
-                                    chave:{{$key}}->significado:{{$element->label}} : {{$value}}
+                            element_id:{{$key}}->label:{{$element->label}} : 
+                            @if(strcmp($element->type,"file") == 0)
+                            <a href="/images/subscriptions/files/{{$value}}" download>{{$value}}</a>
+                            @else
+                                    {{$value}}
+                                    @endif
                                     <br>
                                 @endforeach    
                             <!-- by default the pivot table only contains the keys but in our case there is a data field that is serialized -->

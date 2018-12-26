@@ -14,7 +14,7 @@
                             <img src="/images/event_photos/{{$event->image_path}}">
                         </div>
                         <p>{{$event->description}}</p>
-                        <form method="POST" action="/events/{{$event->id}}/regist">
+                        <form method="POST" action="/events/{{$event->id}}/regist" enctype="multipart/form-data">
                             <table>
                             @foreach($event->elements as $element)
                             <br>

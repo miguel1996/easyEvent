@@ -38,7 +38,6 @@ class ElementController extends Controller
                         $first = array_shift($splited);
                         $element->label = $first;
                         break;
-                    
                     default:
                         $element->label = $request->input('label'.$i);
                         break;
