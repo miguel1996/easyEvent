@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Element;
 use Illuminate\Http\Request;
+use App\SubElement;
 
 class ElementController extends Controller
 {
@@ -26,15 +28,42 @@ class ElementController extends Controller
         $boolAllElementsSaved = true;
         $elements = array();
         $numOfElements = $request->numOfElements;
-        for($i = 1;$i<=$numOfElements;$i++){         
+        for ($i = 1;$i<=$numOfElements;$i++) {
             if ($request->has('label'.$i, 'enumSelect'.$i)) {
                 $element = new Element;
-                $element->label = $request->input('label'.$i);
+                // switch case to check if the element is one that may have subElements (ex: radio button)
+                switch ($request->input('enumSelect'.$i)) {
+                    case 'radio':
+                        $splited = explode(",", $request->input('label'.$i));
+                        $first = array_shift($splited);
+                        $element->label = $first;
+                        break;
+                    
+                    default:
+                        $element->label = $request->input('label'.$i);
+                        break;
+                }              
                 $element->type = $request->input('enumSelect'.$i);
                 if (!$element->save()) {   //realiza o insert e caso exista algum erro ao inserir a funcção devolve false
                     $boolAllElementsSaved = false;
                 } else {
                     array_push($elements, $element->id);
+
+                    // after the main element is inserted we must insert the sub elements, if they exist
+                    switch ($request->input('enumSelect'.$i)) {
+                        case 'radio':
+                            foreach($splited as $sub){
+                                $sub_element = new SubElement;
+                                $sub_element->name = $sub;
+                                $sub_element->element_id = $element->id;
+                                $sub_element->save();
+                            }
+                            break;
+                        
+                        default:
+                            //default
+                            break;
+                    } 
                 }
             }
         }

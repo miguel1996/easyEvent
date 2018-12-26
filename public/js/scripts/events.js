@@ -9,7 +9,7 @@ $(document).ready(function(){
             console.log(numElements);
             numElements++;
             //will append a list of the possible enums and the necessary fields to insert an extra element to the event subscription
-            $("#fields_zone").append("<span class='text"+numElements+"'><br><br>Extra field " + numElements + ': </span><input id="field' + numElements + '" type="text" name="label' + numElements + '" required pattern="[a-z A-Z]{4,}">' + " ");
+            $("#fields_zone").append("<span class='text"+numElements+"'><br><br>Extra field " + numElements + ': </span><input id="field' + numElements + '" type="text" name="label' + numElements + '">' + " ");//required pattern="[a-z A-Z]{4,}"
             $("#fields_zone").append("<span class='text"+numElements+"'>Extra field type " + numElements + ':</span><select id="enumSelect' + numElements + '" name="enumSelect' + numElements + '" required></select>');
             $("#enumSelect" + numElements).append('<option style="display:none">' + "</option>");
             $(".enums").each(function () {

@@ -15,22 +15,28 @@
                         </div>
                         <p>{{$event->description}}</p>
                         <form method="POST" action="/events/{{$event->id}}/regist">
+                            <table>
                             @foreach($event->elements as $element)
                             <br>
-                            <li>
+                            <tr>
+                            <td>                       
+                            {{$element->label}}
+                            </td>
                             @if($element->subElements->isNotEmpty())
                                <!-- quando é um elemento com sub elementos (ex: radiobutton) -->
                                @foreach($element->subElements as $subElement)
-                               {{$subElement->name}}
-                                <input value="{{$subElement->name}}" type="{{$element->type}}" name="element{{$element->id}}" required>
+                               <td>{{$subElement->name}}
+                                <input value="{{$subElement->name}}" type="{{$element->type}}" name="element{{$element->id}}" required></td>
                                 @endforeach
                             @else
                             <!-- quando é um elemento normal -->
-                                 {{$element->label}}
+                            <td>
                                 <input type="{{$element->type}}" name="element{{$element->id}}" required>
-                            @endif 
-                            </li>
+                                </td>
+                            @endif                            
+                            </tr>
                             @endforeach
+                            </table>
                             <br>
                             <li>  
                                 @csrf
