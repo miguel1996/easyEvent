@@ -18,8 +18,17 @@
                             @foreach($event->elements as $element)
                             <br>
                             <li>
-                                {{$element->label}}
-                                <input type="{{$element->type}}" name="element{{$element->id}}" required> 
+                            @if($element->subElements->isNotEmpty())
+                               <!-- quando é um elemento com sub elementos (ex: radiobutton) -->
+                               @foreach($element->subElements as $subElement)
+                               {{$subElement->name}}
+                                <input value="{{$subElement->name}}" type="{{$element->type}}" name="element{{$element->id}}" required>
+                                @endforeach
+                            @else
+                            <!-- quando é um elemento normal -->
+                                 {{$element->label}}
+                                <input type="{{$element->type}}" name="element{{$element->id}}" required>
+                            @endif 
                             </li>
                             @endforeach
                             <br>
