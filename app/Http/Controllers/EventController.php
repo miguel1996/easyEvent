@@ -176,21 +176,21 @@ class EventController extends Controller
     {
         //
 
-        //  $user = Auth::user();
-        // if ($event = Event::find($request->event_id)) {
-        //     if ($event->opening_subscription_date > Carbon::now()) {
-        //         if ($user->events()->detach($request->event_id)) {
-        //             $request->session()->flash('status', 'subscrição do evento '.$request->event_id.' cancelada com sucesso');
-        //         } else {
-        //             $request->session()->flash('status', 'Erro ao cancelar a subscrição');
-        //         }
-        //     } else {
-        //         $request->session()->flash('status', 'data de fecho ja passou');
-        //     }
-        // } else {
-        //     $request->session()->flash('status', 'Evento nao existente');
-        // }
-        // return redirect('/subscriptions');
+         $user = Auth::user();
+        if ($event = Event::find($request->event_id)) {
+            if ($event->opening_subscription_date > Carbon::now()) {
+                // if ($user->events()->detach($request->event_id)) {
+                //     $request->session()->flash('status', 'subscrição do evento '.$request->event_id.' cancelada com sucesso');
+                // } else {
+                //     $request->session()->flash('status', 'Erro ao cancelar a subscrição');
+                // }
+            } else {
+                $request->session()->flash('status', 'data de fecho ja passou');
+            }
+        } else {
+            $request->session()->flash('status', 'Evento nao existente');
+        }
+        return redirect('/subscriptions');
 
     }
 
