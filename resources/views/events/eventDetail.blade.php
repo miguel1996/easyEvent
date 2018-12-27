@@ -14,6 +14,9 @@
                             <img src="/images/event_photos/{{$event->image_path}}">
                         </div>
                         <p>{{$event->description}}</p>
+                        <p>Subscription opens at: {{$event->opening_subscription_date}}</p>
+                        <p>Event date: {{$event->event_date}}</p>
+                        <p>Subscription open until {{$event->closing_subscription_date}}</p>
                         <form method="POST" action="/events/{{$event->id}}/regist" enctype="multipart/form-data">
                             <table>
                             @foreach($event->elements as $element)

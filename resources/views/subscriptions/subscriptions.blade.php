@@ -12,41 +12,37 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header"><h4>My subscriptions</h4></div>
+                @foreach($subscriptions as $sub)
                 <div class="card-body">
                    <ul>
-                          
-                        @foreach($subscriptions as $sub)
-                            titulo: {{$sub->title}}
-                            <br>
-                            @php ($unserializedData = unserialize($sub->pivot->data))  
-                            <!-- unserialize the data first so that it gets stored as an array -->
-                            pivot table:  <br> @foreach($unserializedData as $key => $value)
+                         <h4><li>{{$sub->title}}</li></h4> 
+                         @php ($unserializedData = unserialize($sub->pivot->data))
+                         <!-- unserialize the data first so that it gets stored as an array -->
+                         <li><img src="/images/event_photos/{{$sub->image_path}}" heigth="100" width=100></li>
+                         <li>Event date: {{$sub->event_date}}</li>
+                         <li>Closing Subscription Date {{$sub->closing_subscription_date}}</li>  
+                         <li><strong><ins>Subscription data</ins></strong></li>   
+                         @foreach($unserializedData as $key => $value)
                             @php($element = \App\Element::find($key))
-                            element_id:{{$key}}->label:{{$element->label}} : 
+                            <li><strong>{{$element->label}}</strong>: 
                             @if(strcmp($element->type,"file") == 0)
                             <a href="/images/subscriptions/files/{{$value}}" download>{{$value}}</a>
                             @else
                                     {{$value}}
                                     @endif
-                                    <br>
-                                @endforeach    
+                                    </li> 
+                        @endforeach    
                             <!-- by default the pivot table only contains the keys but in our case there is a data field that is serialized -->
-                            <br>
-                            <strong>campos do formulario:</strong><br>
-                                @foreach($sub->elements as $element)
-                                    {{$element->label}}->{{$element->type}}<br>
-                                @endforeach
-                                <br>
+                            @if($sub->closing_subscription_date > \Carbon\Carbon::now())
                                 <form action="/subscriptions/delete" method="POST">
                                 @csrf
                                     <input type="hidden" value="{{$sub->id}}" name="event_id">
-                                    <input type="submit" value="cancelar esta merda">
+                                    <input type="submit" value='Cancel "{{$sub->title}}" Subscription'>
                                 </form>
-                                <br><br><br>
-                        @endforeach
+                            @endif                   
                    </ul>
                 </div>
-               
+                @endforeach
             </div>
         </div>
     </div>
