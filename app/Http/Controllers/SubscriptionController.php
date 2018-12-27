@@ -17,7 +17,7 @@ class SubscriptionController extends Controller
     {
         $user = Auth::user();
         if($user){
-             $subscriptions = $user->events()->get();
+             $subscriptions = $user->events()->where('event_date','>=', Carbon::now())->orderBy('event_date','asc')->get();
              return view('subscriptions.subscriptions',compact('subscriptions','user'));
         }else{
             return redirect('/');

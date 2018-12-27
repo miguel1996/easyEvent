@@ -26,7 +26,7 @@
 </script>
 <div id="subtitle" class="flex-center position-ref">
     <div class="col-md-8">
-        <h1>Available Subscriptions</h1>
+        <h2>Events Open to Subscription</h2>
     </div>
 </div>
 <div id="events" class="flex-center position-ref">
