@@ -22,6 +22,7 @@ class EventController extends Controller
         $user = Auth::user();
         if ($user) {
             $events = Event::where('event_date','>=', Carbon::now())
+            ->orderBy('event_date','asc')
             ->get();
             return view('events.events', compact('events'));
         } else {
