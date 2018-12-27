@@ -36,7 +36,12 @@ class UserController extends Controller
     public function eventManagement($id)
     {
         $event = Event::find($id);
+       
+        $table = 'elements';
+            $columns = DB::select("SHOW COLUMNS FROM ". $table." WHERE Field = 'type'");
+            preg_match("/^enum\(\'(.*)\'\)$/", $columns[0]->Type, $matches);
+            $enum = explode("','", $matches[1]); //in $enum are all input types for an element
         $subscriptions = $event->users()->get();
-        return view('users.eventManagement',compact('event','subscriptions'));
+        return view('users.eventManagement',compact('event','subscriptions', 'enum'));
     }
 }
