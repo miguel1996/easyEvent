@@ -53,4 +53,6 @@ Route::group(['middleware' => 'App\Http\Middleware\EventManagerMiddleware'], fun
     Route::get('/user/events/{id}', 'UserController@eventManagement');
     Route::get('/user/events', 'UserController@myEventsManagement');
     Route::post('/events', 'EventController@create');
+    Route::post('/user/events/{id}', 'EventController@update');
+
 });

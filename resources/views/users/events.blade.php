@@ -11,18 +11,18 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <form action="/events/" method="post" enctype="multipart/form-data">
+                <form name="create_event" action="/events/" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-header"><h4>Add event</h4></div>
                     <div class="card-body">
-                        title: <input type="text" name="title" id="title" placeholder="introduza o titulo do evento">
+                        title: <input type="text" name="title" id="title" placeholder="introduza o titulo do evento" required>
                         <br>
                         <br>
                         description:
                         <br>
-                        <textarea name="description" id="description" cols="70" rows="10"></textarea>
+                        <textarea name="description" id="description" cols="70" rows="10" required></textarea>
                         <br>
-                        img: <input type="file" name="event_photo" title="Event Photo">
+                        img: <input type="file" name="event_photo" title="Event Photo" required>
                         <br>
                         Forecast Região Autónoma da Madeira:<table>
                         @foreach($data->list as $val)
@@ -38,19 +38,19 @@
                         </table>
                         <br>
                         date and time of the event: <br> 
-                        <input type="datetime-local" name="event_date" id="event_date"> 
+                        <input type="datetime-local" name="event_date" id="event_date" required> 
                         <div id="event_date_error_box" class="error" style="display:none"><br>
                         <span id="event_date_error" aria-live="polite"></span>
                         </div>
                         <br>
                         opening subscription date: <br>
-                        <input type="datetime-local" name="opening_subscription_date" id="opening_subscription_date">
+                        <input type="datetime-local" name="opening_subscription_date" id="opening_subscription_date" required>
                         <div id="opening_subscription_date_error_box" class="error" style="display:none"><br>
                         <span id="opening_subscription_date_error" aria-live="polite"></span>
                         </div>
                         <br>
                         closing subscription date: <br>
-                        <input type="datetime-local" name="closing_subscription_date" id="closing_subscription_date">
+                        <input type="datetime-local" name="closing_subscription_date" id="closing_subscription_date" required>
                         <div id="closing_subscription_date_error_box" class="error" style="display:none"><br>
                         <span id="closing_subscription_date_error" aria-live="polite"></span>
                         </div>

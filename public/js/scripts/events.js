@@ -1,6 +1,8 @@
 var numElements = 0;
+var validator = false;
 $(document).ready(function(){
     // console.log("#field" + numElements);
+    
     
     $("#addElement").click(function () {
         
@@ -31,6 +33,16 @@ $(document).ready(function(){
         $("#enumSelect" + $(this).val()).remove();
         $("#deleteField"+$(this).val()).remove();
         $(".text"+$(this).val()).remove();
+    });
+    
+    //stackoverflow.com/questions/43075526/if-checkbox-not-checked-dont-send-form-with-submit-input-type-image
+
+    https: $('form[name="create_event"]').submit(function() {
+        if (!validator) {
+            alert("Some of the fields are not valid.");
+            return false;
+        }
+        return true;
     });
 });
 
@@ -116,10 +128,10 @@ function checkDate(startDt, endDt, message) {
     if (new Date(startDt).getTime() <= new Date(endDt).getTime()) {
         // Your code here
         // alert(message);
-        
+        validator = false;
         return false;
     } else {
-       
+        validator = true;
         return true;
     }
 }
