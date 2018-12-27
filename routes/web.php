@@ -44,6 +44,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function (
 
     Route::get('/admin/users/{id}/edit','Admin\UserController@showUser');
     Route::post('/admin/users/{id}/edit','Admin\UserController@editUser');
+
+    Route::get('/admin/events','Admin\EventController@index');
 });
 
 //event manager/admin only routes
