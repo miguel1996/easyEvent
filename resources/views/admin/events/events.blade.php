@@ -14,11 +14,12 @@
 	<div class="card-body">
 	<table>
 	<tr>
-	<th>Name</th><th>Email</th><th>Group</th><th>Manage</th>
+	<th>Event</th><th>Manager</th><th>Event date</th><th>Actions</th>
 	</tr>
-	@foreach($users as $user)
+	@foreach($events as $event)
+    @php($user = \App\User::find($event->user_id))
         <tr> 
-		<td>{{$user->name}} </td><td>{{$user->email}}</td><td>{{$user->group->name}}</td><td><a href="/admin/users/{{$user->id}}/edit">Edit</a></td>
+		<td>{{$event->title}} </td><td>{{$user->name}}</td><td>{{$event->event_date}}</td><td><a href="/user/events/{{$event->id}}">Manage</a></td>
 		</tr>
     @endforeach
 	</table>

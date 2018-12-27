@@ -20,7 +20,7 @@ Route::get('/home', 'HomeController@index');
 
 //subscriptions routes
 Route::get('/subscriptions', 'SubscriptionController@index');
-Route::post('/subscriptions/delete','SubscriptionController@cancel');
+Route::post('/subscriptions/delete', 'SubscriptionController@cancel');
 
 //events routes
 Route::get('/events', 'EventController@index');
@@ -37,8 +37,15 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function (
     );
     Route::get('/admin/users', 'Admin\UserController@index');   //must be inside admin middleware
 
-Route::get('/admin/users/register',function (Request $request) { return view('admin.users.register',compact('request'));});
-Route::post('/admin/users/register','Admin\UserController@registUser');
+    Route::get('/admin/users/register', function (Request $request) {
+        return view('admin.users.register', compact('request'));
+    });
+    Route::post('/admin/users/register', 'Admin\UserController@registUser');
+
+    Route::get('/admin/users/{id}/edit','Admin\UserController@showUser');
+    Route::post('/admin/users/{id}/edit','Admin\UserController@editUser');
+
+    Route::get('/admin/events','Admin\EventController@index');
 });
 
 //event manager/admin only routes
