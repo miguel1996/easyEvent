@@ -12,9 +12,16 @@
 		<h4>Users</h4>
 	</div>
 	<div class="card-body">
-    @foreach($users as $user)
-        <li> {{$user->name}} </li>
+	<table>
+	<tr>
+	<th>Name</th><th>Email</th><th>Group</th><th>Manage</th>
+	</tr>
+	@foreach($users as $user)
+        <tr> 
+		<td>{{$user->name}} </td><td>{{$user->email}}</td><td>{{$user->group->name}}</td><td><a href="/admin/users/{{$user->id}}/edit">Edit</a></td>
+		</tr>
     @endforeach
+	</table>
 	</div>
 </div>
 @endsection

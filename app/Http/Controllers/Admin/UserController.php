@@ -40,5 +40,29 @@ class UserController extends Controller
         $request->session()->flash('status', 'registered new user!');
         return redirect()->back();
     }
-    
+ 
+    public function showUser($id){
+        $user = User::find($id);
+        return view('admin.users.editUser',compact('user'));
+    }
+
+    public function editUser(Request $request){
+        $validator = Validator::make($request->all(), [
+            'c_password' => 'same:password',
+            'date_of_birth' => ['required','date','before:tomorrow'],
+            'address' => ['required','string'],
+            'phone_number' => ['required','integer'],
+            'gender' => ['required','string'],
+            'group_id' => ['required','integer'],
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator->errors());
+        }
+        dd($request);
+        $input = $request->all();
+        $input['password'] = bcrypt($input['password']);
+        $user = User::create($input);
+        $request->session()->flash('status', 'registered new user!');
+        return redirect()->back();
+    }
 }
