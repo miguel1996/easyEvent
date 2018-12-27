@@ -46,7 +46,7 @@ class UserController extends Controller
         return view('admin.users.editUser',compact('user'));
     }
 
-    public function editUser(Request $request){
+    public function editUser(Request $request,$id){
         $validator = Validator::make($request->all(), [
             'c_password' => 'same:password',
             'date_of_birth' => ['required','date','before:tomorrow'],
@@ -58,11 +58,18 @@ class UserController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator->errors());
         }
-        dd($request);
-        $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
-        $user = User::create($input);
-        $request->session()->flash('status', 'registered new user!');
+        $user = User::find($id);
+        $user->date_of_birth = $request->date_of_birth;
+        $user->address = $request->address;
+        $user->phone_number = $request->phone_number;
+        $user->gender = $request->gender;
+        $user->group_id = $request->group_id;
+        if($request->password != "")
+        {
+           $user->password = bcrypt($request->password);
+        }
+        $user->save();
+        $request->session()->flash('status', 'user updated successfully');
         return redirect()->back();
     }
 }
