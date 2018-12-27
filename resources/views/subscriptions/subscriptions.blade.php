@@ -37,9 +37,16 @@
                                 <form action="/subscriptions/delete" method="POST">
                                 @csrf
                                     <input type="hidden" value="{{$sub->id}}" name="event_id">
-                                    <input type="submit" value='Cancel "{{$sub->title}}" Subscription'>
+                                    <div class="form-group row mb-0">
+                                        <div id="submit-button">
+                                            <button type="submit" class="btn btn-primary">
+                                                Cancel "{{$sub->title}}" Subscription (METER UM ALERT PARA CONFIMAR O CANCELAMENTO)
+                                            </button>
+                                        </div>
+                                    </div>
                                 </form>
-                            @endif                   
+                            @endif    
+                                           
                    </ul>
                 </div>
                 @endforeach
