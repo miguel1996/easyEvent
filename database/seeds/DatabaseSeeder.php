@@ -51,7 +51,8 @@ class UserTableSeeder extends Seeder {
             'address' => 'rua da '.str_random(7),
             'phone_number' => random_int(100000000,999999999),
             'gender' => 'male',
-            'group_id' => 1
+            'group_id' => 1,
+            'state' => 1
         ]);
     }
 }

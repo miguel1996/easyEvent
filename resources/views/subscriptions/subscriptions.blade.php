@@ -41,7 +41,7 @@
                                     <div class="form-group row mb-0">
                                         <div id="submit-button">
                                             <button type="submit" class="btn btn-primary">
-                                                Cancel "{{$sub->title}}" Subscription (METER UM ALERT PARA CONFIMAR O CANCELAMENTO: 'https://www.w3schools.com/jsref/met_win_confirm.asp')
+                                                Cancel "{{$sub->title}}" Subscription
                                             </button>
                                         </div>
                                     </div>

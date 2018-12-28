@@ -50,6 +50,7 @@ class UserController extends Controller
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $input['group_id'] = 2;//by default its in the member group
+        $input['state'] = 1;//active
         $user = User::create($input);
         $success['token'] =  $user->createToken('MyApp')-> accessToken;
         $success['name'] =  $user->name;

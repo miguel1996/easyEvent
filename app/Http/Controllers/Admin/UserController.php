@@ -36,6 +36,7 @@ class UserController extends Controller
         }
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
+        $input['state'] = 1;
         $user = User::create($input);
         $request->session()->flash('status', 'registered new user!');
         return redirect()->back();
