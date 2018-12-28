@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('scripts')
-<script type= "text/javascript">
+<script type="text/javascript" src="{{asset('js/scripts/events.js')}}"></script>
+<script type= "text/javascript">    
     $(document).ready(function(){$("#subs-button").addClass("active");});
 </script>
 @endsection
@@ -34,7 +35,7 @@
                         @endforeach    
                             <!-- by default the pivot table only contains the keys but in our case there is a data field that is serialized -->
                             @if($sub->closing_subscription_date > \Carbon\Carbon::now())
-                                <form action="/subscriptions/delete" method="POST">
+                                <form name="formCancelSubscription" action="/subscriptions/delete" method="POST">
                                 @csrf
                                     <input type="hidden" value="{{$sub->id}}" name="event_id">
                                     <div class="form-group row mb-0">

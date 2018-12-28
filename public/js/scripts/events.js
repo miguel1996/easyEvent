@@ -1,9 +1,7 @@
 var numElements = 0;
 var validator = false;
 $(document).ready(function(){
-    // console.log("#field" + numElements);
-    
-    
+   
     $("#addElement").click(function () {
         
         if ($("#field" + numElements).val() != "" && $("#enumSelect" + numElements).val() != "") {
@@ -44,6 +42,19 @@ $(document).ready(function(){
         }
         return true;
     });
+
+    https: $('form[name="formCancelSubscription"]').submit(
+               function() {
+                   var validate = confirm(
+                       "Tem a certeza que quere cancelar a subcrição?"
+                   );
+                   if (!validate) {
+                       return false;
+                   }
+                   return true;
+               }
+           );
+
 });
 
 $("#event_date").change(function(){   
@@ -135,4 +146,6 @@ function checkDate(startDt, endDt, message) {
         return true;
     }
 }
+
+
 
