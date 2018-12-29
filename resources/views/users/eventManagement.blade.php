@@ -91,7 +91,7 @@
 
                             @endforeach
                         </ul>
-                        <input type="hidden" name="numOfElements" value=0 id="numOfElements">
+                        <input type="hidden" name="numOfElements" value="{{$numElements}}" id="numOfElements">
                         <div class="register links">
                             <button type="button" id="addElement">+</button>
                         </div>                        
