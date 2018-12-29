@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Event;
@@ -9,6 +10,7 @@ use App\Element;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ElementController;
+use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
@@ -70,7 +72,7 @@ class EventController extends Controller
         }
         else{
             
-            return redirect('/events');
+            return redirect('/user/events');
         }
         //fim de if($user)
         } else {
@@ -178,16 +180,26 @@ class EventController extends Controller
     {
         if ($event = Event::find($id)) {
             if ($event->opening_subscription_date > Carbon::now()) {
-                $transaction_result = DB::transaction(function () use ($request,$id) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
-                //     $result_create_elements = app('App\Http\Controllers\ElementController')->create($request);
-                //         if (!$result_create_elements[0]) {
-                //             return false;//dd("erro ao inserir elementos");
-                //         }
-                //         // event creation
-                $file = $request->file('event_photo');
-                $filename = time().'-'.$file->getClientOriginalName();
-                $file = $file->move('images/event_photos', $filename);
-                $event->image_path = $filename;
+                $transaction_result = DB::transaction(function () use ($request,$id,$event) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
+                //first delete all elements
+                if(!app('App\Http\Controllers\ElementController')->destroyAll($id))
+                    return $request->session()->flash('status', 'Erro ao editar os elementos antigos');//sai da funcao da transação
+                //then insert the new ones in the request
+                $result_create_elements = app('App\Http\Controllers\ElementController')->create($request);
+                if (!$result_create_elements[0]) {
+                    $request->session()->flash('status', 'Erro ao editar elementos');
+                }
+                $event->elements()->attach($result_create_elements[1]);//attaches all element ids that are in the $result_create_elements[1] array to the event-elements intermediary table
+                //event update
+                //delete the current image if a new one comes in the request
+                if ($request->file('event_photo')) {
+                    File::delete(public_path().'/images/event_photos/'.$event->image_path);
+
+                    $file = $request->file('event_photo');
+                    $filename = time().'-'.$file->getClientOriginalName();
+                    $file = $file->move('images/event_photos', $filename);
+                    $event->image_path = $filename;
+                }
                 $event->title = $request->title;
                 $event->description = $request->description;
                 $event->event_date = $request->event_date;
@@ -227,5 +239,9 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         //
+    }
+
+    public function attachElement(){
+        return dd("OLA");
     }
 }
