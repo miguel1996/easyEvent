@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->date('date_of_birth');
             $table->string('address');
+            $table->integer('state');
             $table->integer('phone_number')->nullable();
             $table->enum('gender',['male','female','i prefer not to say','all of the above']);
             $table->integer('group_id')->unsigned()->index();

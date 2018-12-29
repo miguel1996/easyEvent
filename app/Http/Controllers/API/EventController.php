@@ -17,6 +17,19 @@ class EventController extends Controller
         public function allEvents()
         {
             $events = Event::all();
-            return response()->json(['success' => $events], $this-> successStatus);
+            return response()->json(['events' => $events], $this-> successStatus);
         }
+
+        /**
+        * one specific event
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function specificEvent($id)
+        {
+            $event = Event::find($id);
+            $elements = $event->elements()->get();
+            return response()->json(['event' => $event,'extra_elements' => $elements], $this-> successStatus);
+        }
+
 }
