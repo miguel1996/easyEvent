@@ -10,7 +10,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><h4>All events</h4></div>
+                <div class="card-header"><h4>All future events</h4></div>
                 @foreach($events as $event)               
                     <div class="card-body">
                         <ul>

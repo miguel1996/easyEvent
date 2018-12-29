@@ -15,6 +15,7 @@
                         </div>
                         <p>{{$event->description}}</p>
                         <p>Event date: {{$event->event_date}}</p>
+                        @if(!$isSubscribed)
                         @if($event->closing_subscription_date > \Carbon\Carbon::now() && $event->opening_subscription_date < \Carbon\Carbon::now())                                            
                         <p>Subscriptions are open until {{$event->closing_subscription_date}}</p>
                         <form method="POST" action="/events/{{$event->id}}/regist" enctype="multipart/form-data">
@@ -49,6 +50,7 @@
                             </li>
                         </form>
                         @endif
+                        @else You are already subscribed to this event @endif
                     </ul>
                 </div>
 

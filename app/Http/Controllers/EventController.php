@@ -147,7 +147,8 @@ class EventController extends Controller
         $user = Auth::user();
         if ($user) {
             $event = Event::find($id);
-            return view('events.eventDetail', compact('event'));
+            $isSubscribed = $user->events->contains($id);
+            return view('events.eventDetail', compact('event','isSubscribed'));
         } else {
             return redirect('/');
         }
