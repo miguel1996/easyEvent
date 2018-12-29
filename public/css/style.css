@@ -236,3 +236,15 @@ input.invalid {
     border-color: #900;
     background-color: #FDD;
 }
+
+.emsg {
+    color: red;
+}
+
+.hidden {
+    visibility: hidden;
+}
+p.span_emsg{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
