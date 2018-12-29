@@ -9,7 +9,7 @@
 @section('content')
 <div class="card">
 @if($canEditEvent)
-    <form action="/events/" method="post" enctype="multipart/form-data">
+    <form action="/user/events/{{$event->id}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-header"><h4>Manage Event</h4></div>
                     <div class="card-body">

@@ -174,25 +174,47 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, $id)
     {
-        //
-
-         $user = Auth::user();
-        if ($event = Event::find($request->event_id)) {
+        if ($event = Event::find($id)) {
             if ($event->opening_subscription_date > Carbon::now()) {
+                $transaction_result = DB::transaction(function () use ($request,$id) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
+                //     $result_create_elements = app('App\Http\Controllers\ElementController')->create($request);
+                //         if (!$result_create_elements[0]) {
+                //             return false;//dd("erro ao inserir elementos");
+                //         }
+                //         // event creation
+                $file = $request->file('event_photo');
+                $filename = time().'-'.$file->getClientOriginalName();
+                $file = $file->move('images/event_photos', $filename);
+                $event->image_path = $filename;
+                $event->title = $request->title;
+                $event->description = $request->description;
+                $event->event_date = $request->event_date;
+                $event->opening_subscription_date = $request->opening_subscription_date;
+                $event->closing_subscription_date = $request->closing_subscription_date;
+                if (!$event->save()) {
+                    $request->session()->flash('status', 'Erro ao editar o evento');
+                }
+                // $event->elements()->attach($result_create_elements[1]);//attaches all element ids that are in the $result_create_elements[1] array to the event-elements intermediary table
+    
+                $request->session()->flash('status', 'Evento editado com sucesso');
+            });
+
+
+
                 // if ($user->events()->detach($request->event_id)) {
                 //     $request->session()->flash('status', 'subscrição do evento '.$request->event_id.' cancelada com sucesso');
                 // } else {
                 //     $request->session()->flash('status', 'Erro ao cancelar a subscrição');
                 // }
             } else {
-                $request->session()->flash('status', 'data de fecho ja passou');
+                $request->session()->flash('status', 'Não pode editar um evento que já esteja aberto a subscrições');
             }
         } else {
             $request->session()->flash('status', 'Evento nao existente');
         }
-        return redirect('/subscriptions');
+        return redirect('/events');
 
     }
 

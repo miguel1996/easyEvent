@@ -52,4 +52,5 @@ class UserController extends Controller
          
         return view('users.eventManagement',compact('event','subscriptions', 'enum','canEditEvent'));
     }
+
 }
