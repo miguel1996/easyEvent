@@ -8,6 +8,8 @@
 
 @section('content')
 
+@php($date_now = \Carbon\Carbon::now())
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -21,6 +23,11 @@
                          <!-- unserialize the data first so that it gets stored as an array -->
                          <li><img src="/images/event_photos/{{$sub->image_path}}" heigth="100" width=100></li>
                          <li>Event date: {{$sub->event_date}}</li>
+                         @php($dateDiff = $date_now->diffInDays($sub->event_date))
+                         @if($dateDiff <= 4 && $dateDiff >= 0 )
+                        
+                            <li>{{$weather_data[$dateDiff]['date']}} temp:{{$weather_data[$dateDiff]['temp']}} ºC <img src="http://openweathermap.org/img/w/{{$weather_data[$dateDiff]['icon']}}.png" alt="{{$weather_data[$dateDiff]['icon_desc']}}" title="{{$weather_data[$dateDiff]['icon_desc']}}"> </li>
+                         @endif
                          <li>Closing Subscription Date {{$sub->closing_subscription_date}}</li>  
                          <li><strong><ins>Subscription data</ins></strong></li>   
                          @foreach($unserializedData as $key => $value)

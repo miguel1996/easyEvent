@@ -16,9 +16,28 @@ class SubscriptionController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if($user){
+        if($user){ 
              $subscriptions = $user->events()->where('event_date','>=', Carbon::now())->orderBy('event_date','asc')->get();
-             return view('subscriptions.subscriptions',compact('subscriptions','user'));
+             
+             //get weather if possible
+             
+             $client = new \GuzzleHttp\Client();
+             $data = $client->request('GET', 'https://api.openweathermap.org/data/2.5/forecast?id=2593105&appid=c0d3d6d2e29c32877223d60ce0071fa6&units=metric');
+            $body = $data->getBody();
+            $data = json_decode($body);
+
+            $iteration = 0;
+            $weather_data = array();
+            foreach($data->list as $val){
+                $date = gmdate("d-m-Y",$val->dt);
+                $dateCmp = gmdate("H",$val->dt);
+                $weather = $val->weather;
+            if (strcmp($dateCmp,"12") == 0){         
+            array_push($weather_data, array("date" => $date, "temp" => $val->main->temp, "icon" => $weather[0]->icon, "icon_desc" => $weather[0]->description));
+            }
+            $iteration++;
+            }
+             return view('subscriptions.subscriptions',compact('subscriptions','user','weather_data'));
         }else{
             return redirect('/');
         }
