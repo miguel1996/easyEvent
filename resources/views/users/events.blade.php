@@ -34,7 +34,7 @@
                         <br>
                         Forecast Região Autónoma da Madeira:<table>
                         @foreach($data->list as $val)
-                        @php($date = gmdate("d-m-Y->H:m A",$val->dt))
+                        @php($date = gmdate("d-m-Y",$val->dt))
                         @php($dateCmp = gmdate("H",$val->dt))
                         @php($weather = $val->weather)
                         @if (strcmp($dateCmp,"12") == 0)
