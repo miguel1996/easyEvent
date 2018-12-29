@@ -79,28 +79,52 @@ class SubscriptionController extends Controller
         //
     }
 
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function cancel(Request $request)
+    // {
+    //     $user = Auth::user();
+    //     if ($event = Event::find($request->event_id)) {
+    //         if ($event->closing_subscription_date > Carbon::now()) {
+    //             if ($user->events()->detach($request->event_id)) {
+    //                 $request->session()->flash('status', 'subscrição do evento '.$request->event_id.' cancelada com sucesso');
+    //             } else {
+    //                 $request->session()->flash('status', 'Erro ao cancelar a subscrição');
+    //             }
+    //         }else{
+    //             $request->session()->flash('status', 'data de fecho ja passou');
+    //         }
+    //     }else{
+    //         $request->session()->flash('status', 'Evento nao existente');
+    //     }
+    //     return redirect('/subscriptions');
+    // }
+
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage through an ajax call.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function cancel(Request $request)
+    public function cancelAJAX(Request $request)
     {
         $user = Auth::user();
         if ($event = Event::find($request->event_id)) {
             if ($event->closing_subscription_date > Carbon::now()) {
                 if ($user->events()->detach($request->event_id)) {
-                    $request->session()->flash('status', 'subscrição do evento '.$request->event_id.' cancelada com sucesso');
+                    return response("subscrição do evento '.$request->event_id.' cancelada com sucesso", 200)->header('Content-Type', 'text/plain');
                 } else {
-                    $request->session()->flash('status', 'Erro ao cancelar a subscrição');
+                    return response("Erro ao cancelar a subscrição", 409)->header('Content-Type', 'text/plain');
                 }
             }else{
-                $request->session()->flash('status', 'data de fecho ja passou');
+                return response("data de fecho ja passou", 403)->header('Content-Type', 'text/plain');
             }
         }else{
-            $request->session()->flash('status', 'Evento nao existente');
+            return response("Evento nao existente", 404)->header('Content-Type', 'text/plain');
         }
-        return redirect('/subscriptions');
     }
 }

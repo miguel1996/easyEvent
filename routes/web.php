@@ -20,8 +20,8 @@ Route::get('/home', 'HomeController@index');
 
 //subscriptions routes
 Route::get('/subscriptions', 'SubscriptionController@index');
-Route::post('/subscriptions/delete', 'SubscriptionController@cancel');
-
+// Route::post('/subscriptions/delete', 'SubscriptionController@cancel');
+Route::post('/subscriptions/delete', 'SubscriptionController@cancelAJAX');
 //events routes
 Route::get('/events', 'EventController@index');
 Route::get('/events/{id}', 'EventController@show');

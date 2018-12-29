@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('scripts')
-<script type="text/javascript" src="{{asset('js/scripts/events.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/scripts/subscriptions.js')}}"></script>
 <script type= "text/javascript">    
     $(document).ready(function(){$("#subs-button").addClass("active");});
 </script>
@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header"><h4>My subscriptions</h4></div>
                 @foreach($subscriptions as $sub)
-                <div class="card-body">
+                <div class="card-body" id="{{$sub->id}}">
                    <ul>
                          <h4><li>{{$sub->title}}</li></h4> 
                          @php ($unserializedData = unserialize($sub->pivot->data))
@@ -35,7 +35,7 @@
                         @endforeach    
                             <!-- by default the pivot table only contains the keys but in our case there is a data field that is serialized -->
                             @if($sub->closing_subscription_date > \Carbon\Carbon::now())
-                                <form name="formCancelSubscription" action="/subscriptions/delete" method="POST">
+                                <!-- <form name="formCancelSubscription" action="/subscriptions/delete" method="POST">
                                 @csrf
                                     <input type="hidden" value="{{$sub->id}}" name="event_id">
                                     <div class="form-group row mb-0">
@@ -45,7 +45,13 @@
                                             </button>
                                         </div>
                                     </div>
-                                </form>
+                                </form> -->
+                                <input type="hidden" id="myToken" name="_token" value="{{csrf_token()}}">
+                                <div class="form-group row mb-0">
+                                        <div id="submit-button">
+                                <button onclick="cancelSub({{$sub->id}})">Cancel AJAX</button>
+                                </div>
+                                    </div>
                             @endif    
                                            
                    </ul>
