@@ -72,7 +72,7 @@ class EventController extends Controller
         }
         else{
             
-            return redirect('/events');
+            return redirect('/user/events');
         }
         //fim de if($user)
         } else {

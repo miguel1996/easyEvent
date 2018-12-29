@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('scripts')
+<script type= "text/javascript">
+    var elements = {!! json_encode($elements) !!};
+</script>
 <script type="text/javascript" src="{{asset('js/scripts/events.js')}}"></script>
 <script type= "text/javascript">
     $(document).ready(function(){$("#my-events-button").addClass("active");});
@@ -7,6 +10,11 @@
 @endsection
 
 @section('content')
+<datalist id="allElements">
+    @foreach($elements as $element)
+        <option value="{{$element->label}}">
+    @endforeach
+</datalist>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
