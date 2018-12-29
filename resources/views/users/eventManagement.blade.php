@@ -8,6 +8,7 @@
 
 @section('content')
 <div class="card">
+@if($canEditEvent)
     <form action="/events/" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-header"><h4>Manage Event</h4></div>
@@ -95,12 +96,14 @@
                             <button type="button" id="addElement">+</button>
                         </div>                        
                         <div class="register links">
-                            <input class="btn" type="submit" value="Submit">
+                            <input class="btn" type="submit" value="Edit Event">
                         </div>
                     </div>
                 </form>
+                <!-- if cannot edit the event, the event info and subscriptions will appear -->
+                @else 
             <div class="card-header"><h4>{{$event->title}}</h4></div>
-            {{-- <div class="card-body">
+         <div class="card-body">
                 <div class="card-image">
                     <img src="/images/event_photos/{{$event->image_path}}">
                 </div>
@@ -116,7 +119,7 @@
                     @endforeach
                 </ul>
                 </div>
-            </div> --}}
+            </div>
 
             <div class="card-header"><h4>{{$event->title}} subscriptions</h4></div>
             @foreach($subscriptions as $user)
@@ -142,4 +145,5 @@
             
         </div>
         @endforeach
+        @endif
 @endsection

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Event;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -42,6 +43,13 @@ class UserController extends Controller
             preg_match("/^enum\(\'(.*)\'\)$/", $columns[0]->Type, $matches);
             $enum = explode("','", $matches[1]); //in $enum are all input types for an element
         $subscriptions = $event->users()->get();
-        return view('users.eventManagement',compact('event','subscriptions', 'enum'));
+        if($event->opening_subscription_date < Carbon::now())
+        {
+            $canEditEvent = false;
+        }else{
+            $canEditEvent = true;
+        }
+         
+        return view('users.eventManagement',compact('event','subscriptions', 'enum','canEditEvent'));
     }
 }
