@@ -33,7 +33,7 @@
 				Event Completed
 				@endif
 			</td>
-			<td><a href="/user/events/{{$event->id}}">Manage</a></td>
+			<td><div class="register links"><a href="/user/events/{{$event->id}}">Manage</a></div></td>
 		</tr>
     @endforeach
 	</table>

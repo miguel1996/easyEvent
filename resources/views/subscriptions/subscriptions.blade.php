@@ -55,7 +55,7 @@
                                 </form> -->
                                 <input type="hidden" id="myToken" name="_token" value="{{csrf_token()}}">
                                 <div class="form-group row mb-0">
-                                        <div id="submit-button">
+                                        <div class="register links" id="submit-button">
                                 <button onclick="cancelSub({{$sub->id}})">Cancel {{$sub->title}}</button>
                                 </div>
                                     </div>

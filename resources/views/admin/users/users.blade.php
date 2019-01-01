@@ -18,7 +18,8 @@
 	</tr>
 	@foreach($users as $user)
         <tr> 
-		<td>{{$user->name}} </td><td>{{$user->email}}</td><td>{{$user->group->name}}</td><td><a href="/admin/users/{{$user->id}}/edit">Edit</a></td>
+		<td>{{$user->name}} </td><td>{{$user->email}}</td><td>{{$user->group->name}}</td>
+		<td><div class="register links"><a href="/admin/users/{{$user->id}}/edit">Edit</a></div></td>
 		</tr>
     @endforeach
 	</table>

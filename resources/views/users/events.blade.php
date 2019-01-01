@@ -29,9 +29,9 @@
                         description:
                         <br>
                         <textarea name="description" id="description" cols="70" rows="10" required></textarea>
-                        <br>
+                        <br><br>
                         img: <input type="file" name="event_photo" title="Event Photo" required>
-                        <br>
+                        <br><br>
                         Forecast Região Autónoma da Madeira:<table>
                         @foreach($data->list as $val)
                         @php($date = gmdate("d-m-Y",$val->dt))
@@ -90,7 +90,7 @@
         </div>
     </div>
 </div>
-<div id="subtitle"><h1>My Events</h1></div>
+<div id="subtitle" style="text-align:center;"><h1>My Events</h1></div>
 @foreach($myEvents as $event)
 <div class="container">
     <div class="card">
@@ -110,10 +110,13 @@
                     </li>
                     @endforeach
                 </ul>
+                <br>
                 <li>
-                    <a href="/user/events/{{$event->id}}">
-                        <button id="details_button" type="button">Manage</button><!--Tens um problema aqui, podes tentar resolver com um id autoincremental e usar esse id para fazer o display de apenas esse elemento-->
+                    <div class="register links">
+                    <a href="/user/events/{{$event->id}}">Manage
+                        <!-- <button  id="details_button" type="button">Manage</button> --><!--Tens um problema aqui, podes tentar resolver com um id autoincremental e usar esse id para fazer o display de apenas esse elemento-->
                         </a>
+                    </div>
                 </li> 
             </ul>
         </div>
