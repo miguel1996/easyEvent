@@ -24,7 +24,7 @@ class UserController extends Controller
             $success['token'] =  $user->createToken('MyApp')-> accessToken;//returns the token that must be used to make authenticated requests
             return response()->json(['sucesso' => $success], $this-> successStatus);
         } else {
-            return response()->json(['erro'=>'Nao autorizado'], $this-> notAuthorizedStatus);
+            return response()->json(['erro'=>'Nao autorizado,visit api/documentation for help'], $this-> notAuthorizedStatus);
         }
     }
     /**
@@ -57,13 +57,16 @@ class UserController extends Controller
         return response()->json(['success'=>$success], $this-> successStatus);
     }
     /**
-         * details api
+         *user details api
          *
          * @return \Illuminate\Http\Response
          */
     public function details()
     {
         $user = Auth::user();
-        return response()->json(['success' => $user], $this-> successStatus);
+        $subscriptions = $user->events()->get();
+        return response()->json(['user' => $user,'subscriptions' => $subscriptions], $this-> successStatus);
     }
+
+
 }

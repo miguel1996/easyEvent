@@ -1,250 +1,216 @@
 html, body {
-    background-image: url('/images/media/background19.jpg');
-    background-repeat: no-repeat;
-    background-position: center center fixed;
-    background-size: 100% auto;
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 200;
-    height: 100vh;
-    margin: 0;
-    background-attachment: fixed;
+  background-image: url('/images/media/background19.jpg');
+  background-repeat: no-repeat;
+  background-position: center center fixed;
+  background-size: 100% auto;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  height: 100vh;
+  margin: 0;
+  background-attachment: fixed;
 }
-
 .full-height {
-    height: 100vh;
+  height: 100vh;
 }
-
 .flex-center {
-    align-items: center;
-    display: flex;
-    justify-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
-
 .position-ref {
-    position: relative;
+  position: relative;
 }
-
 .top-right {
-    position: absolute;
-    right: 10px;
-    top: 18px;
+  position: absolute;
+  right: 10px;
+  top: 18px;
 }
-
 .content {
-    text-align: center;
-    width: 60%;
+  text-align: center;
+  width: 60%;
 }
-
 .title {
-    font-size: 84px;
-    background-color: #353137;
-    border: double 3px white;
-    color: white;
+  font-size: 84px;
+  background-color: #353137;
+  border: double 3px white;
+  color: white;
 }
-
-.links>a {
-    color: white;
-    padding: 0 25px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: .1rem;
-    text-decoration: none;
-    text-transform: uppercase;
+.links > a {
+  color: white;
+  padding: 0 25px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  text-transform: uppercase;
 }
-
-.links>a:hover, .links>button:hover {
-    color: #353137;
-    background-color: white;
-    text-decoration: none;
+.links > a:hover, .links > button:hover {
+  color: #353137;
+  background-color: white;
+  text-decoration: none;
 }
-
 .links {
-    background-color: #353137;
-    padding: 5px;
-    border: double 3px white;
+  background-color: #353137;
+  padding: 5px;
+  border: double 3px white;
 }
-
 .m-b-md {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
-
 .card-header, .card-body {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-bottom: 0;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 0;
 }
-
 .card-header {
-    background-color: #353137;
-    color: white;
-    text-align: center;
-    border: solid 3px #353137;
-    margin-top: 30px;
+  background-color: #353137;
+  color: white;
+  text-align: center;
+  border: solid 3px #353137;
+  margin-top: 30px;
 }
-
-.card-header>h4 {
-    margin: 0px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+.card-header > h4 {
+  margin: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-
 .register {
-    font-size: 12pt;
-    text-align: center;
-    width: 10%;
-    margin-left: auto;
-    min-width: 150px;
-    text-decoration: none;
-    color: white;
+  font-size: 12pt;
+  text-align: center;
+  width: 10%;
+  margin-left: auto;
+  min-width: 150px;
+  text-decoration: none;
+  color: white;
 }
-
 .navbar {
-    color: white;
-    background-color: #353137;
-    border-color: white;
-    text-decoration: none;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    padding: 10px 50px 45px 50px;
-    align-items: center;
+  color: white;
+  background-color: #353137;
+  border-color: white;
+  text-decoration: none;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 10px 50px 45px 50px;
+  align-items: center;
 }
-
 .navbar a {
-    display: inline-block;
-    padding: 5px;
-    margin-left: 5px;
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 1.125rem;
+  display: inline-block;
+  padding: 5px;
+  margin-left: 5px;
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.125rem;
 }
-
 .navbar a:hover {
-    background-color: white;
-    color: #353137;
+  background-color: white;
+  color: #353137;
 }
-
 .active {
-    border-bottom: solid 2px white !important;
+  border-bottom: solid 3px white !important;
 }
-
 .card-body {
-    background-color: white;
-    color: #353137;
-    padding: 15px;
-    overflow: hidden;
-    border: solid 3px #353137;
-    border-top: none;
+  background-color: white;
+  color: #353137;
+  padding: 15px;
+  overflow: hidden;
+  border: solid 3px #353137;
+  border-top: none;
 }
-
 /*Imagem à esquerda, altura limitada*/
-
 .card-body img {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    max-width: 50%;
-    max-height: 280px;
-    height: auto;
-    float: left;
-    margin-right: 15px;
-    border: double 3px black;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width: 50%;
+  max-height: 280px;
+  height: auto;
+  float: left;
+  margin-right: 15px;
+  border: double 3px #353137;
 }
-
 .card-body li {
-    list-style-type: none;
+  list-style-type: none;
 }
-
 .card-text {
-    text-align: justify;
+  text-align: justify;
 }
-
 .card-text .extra {
-    text-align: right;
-    display: none;
+  text-align: right;
+  display: none;
 }
-
 #subtitle {
-    background-color: #353137;
-    color: white;
-    margin-top: 30px;
-    width: 30%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    border: double 3px white;
+  background-color: #353137;
+  color: white;
+  margin-top: 30px;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: double 3px white;
 }
-
 #login {
-    width: 50%;
-    margin: auto;
-    margin-top: 10%;
+  width: 50%;
+  margin: auto;
+  margin-top: 10%;
 }
-
 .card-body .row {
-    text-align: center;
-    margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 10px;
 }
-
-.card-body input:not(.form-check-input) {
-    width: 50%;
-    height: 22px;
+.card-body input:not(.form-check-input), .card-body select {
+  width: 50%;
+  height: 22px;
 }
-
-button {
-    background-color: #353137;
-    color: white;
-    border: none;
+button, input[type=submit] {
+  background-color: #353137;
+  color: white;
+  border: none;
 }
-
-button:hover {
-    background-color: white;
-    color: #353137;
+button:hover, input[type=submit]:hover {
+  background-color: white;
+  color: #353137;
 }
-
 #submit-button {
-    margin-left: auto;
-    margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-.register>button {
-    width: 100%;
+.register > button {
+  width: 100%;
 }
-
 /* This is the style of our error messages */
-
 .error {
-    width: 50%;
-    padding: 0;
-    font-size: 80%;
-    color: white;
-    background-color: #900;
-    border-radius: 0 0 5px 5px;
-    box-sizing: border-box;
-    text-align: center;
+  width: 50%;
+  padding: 0;
+  font-size: 80%;
+  color: white;
+  background-color: #900;
+  border-radius: 0 0 5px 5px;
+  box-sizing: border-box;
+  text-align: center;
 }
-
 input.invalid {
-    border-color: #900;
-    background-color: #FDD;
+  border-color: #900;
+  background-color: #fdd;
 }
-
 .emsg {
-    color: red;
+  color: red;
 }
-
 .hidden {
-    visibility: hidden;
+  visibility: hidden;
 }
-p.span_emsg{
-    margin-top: 5px;
-    margin-bottom: 5px;
+p.span_emsg {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+th, td {
+  padding: 8px;
 }

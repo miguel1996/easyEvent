@@ -27,52 +27,52 @@
 
         @auth
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-                <a id="home-button" class="navbar-brand" href="{{ url('/') }}">
-                    <i class="fa fa-home"></i> Home
-                </a>
-                <a id="all-events-button" class="navbar-brand" href="/events">All Events</a>
-                <a id="subs-button" class="navbar-brand" href="/subscriptions">Subscriptions</a>
-                @if (strcmp(Auth::user()->group->name,"member") != 0)  
-                <a id="my-events-button" class="navbar-brand" href="/user/events">Event Management</a>     
-                @if (strcmp(Auth::user()->group->name,"admin") == 0)         
-                <a id="admin-button" class="navbar-brand" href="/admin">Admin</a>
-                @endif
-                @endif
-                    @guest
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            @if (Route::has('register'))
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            @endif
-                        </li>
-                    </ul>
-                    @else
-                    {{Session::get('status')}}
+            <a id="home-button" class="navbar-brand" href="{{ url('/') }}">
+                <i class="fa fa-home"></i> Home
+            </a>
+            <a id="all-events-button" class="navbar-brand" href="/events">All Events</a>
+            <a id="subs-button" class="navbar-brand" href="/subscriptions">Subscriptions</a>
+            @if (strcmp(Auth::user()->group->name,"member") != 0)  
+            <a id="my-events-button" class="navbar-brand" href="/user/events">Event Management</a>     
+            @if (strcmp(Auth::user()->group->name,"admin") == 0)         
+            <a id="admin-button" class="navbar-brand" href="/admin">Admin</a>
+            @endif
+            @endif
+            @guest
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Authentication Links -->
 
-                    <div style="float:right" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-                        {{ Auth::user()->name }}({{ Auth::user()->group->name }}) {{ __('Logout') }}
-                        </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+                <li class="nav-item">
+                    @if (Route::has('register'))
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    @endif
+                </li>
+            </ul>
+            @else
+            {{Session::get('status')}}
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div> 
-                    @endguest
-        </nav>
-        @endauth
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+            <div style="float:right" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                {{ Auth::user()->name }}({{ Auth::user()->group->name }}) {{ __('Logout') }}
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        </div> 
+        @endguest
+    </nav>
+    @endauth
+    <main class="py-4">
+        @yield('content')
+    </main>
+</div>
     <!-- if you want to put a js script start with for example:
     @section('scripts')
         <script src="{{asset('js/scripts/events.js')}}"></script>

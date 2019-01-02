@@ -1,10 +1,18 @@
+$primary-color: #353137;
+$secondary-color: white;
+$border-width: 3px;
+$border-solid: solid $border-width;
+$border-double: double $border-width;
+$primary-font: 'Montserrat';
+$secondary-font: sans-serif;
+
 html, body {
     background-image: url('/images/media/background19.jpg');
     background-repeat: no-repeat;
     background-position: center center fixed;
     background-size: 100% auto;
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
+    color: $secondary-color;
+    font-family: $primary-font, $secondary-font;
     font-weight: 200;
     height: 100vh;
     margin: 0;
@@ -38,13 +46,13 @@ html, body {
 
 .title {
     font-size: 84px;
-    background-color: #353137;
-    border: double 3px white;
-    color: white;
+    background-color: $primary-color;
+    border: $border-double $secondary-color;
+    color: $secondary-color;
 }
 
-.links>a {
-    color: white;
+.links > a {
+    color: $secondary-color;
     padding: 0 25px;
     font-size: 13px;
     font-weight: 600;
@@ -54,15 +62,15 @@ html, body {
 }
 
 .links>a:hover, .links>button:hover {
-    color: #353137;
-    background-color: white;
+    color: $primary-color;
+    background-color: $secondary-color;
     text-decoration: none;
 }
 
 .links {
-    background-color: #353137;
+    background-color: $primary-color;
     padding: 5px;
-    border: double 3px white;
+    border: $border-double $secondary-color;
 }
 
 .m-b-md {
@@ -79,10 +87,10 @@ html, body {
 }
 
 .card-header {
-    background-color: #353137;
-    color: white;
+    background-color: $primary-color;
+    color: $secondary-color;
     text-align: center;
-    border: solid 3px #353137;
+    border: $border-solid $primary-color;
     margin-top: 30px;
 }
 
@@ -99,13 +107,13 @@ html, body {
     margin-left: auto;
     min-width: 150px;
     text-decoration: none;
-    color: white;
+    color: $secondary-color;
 }
 
 .navbar {
-    color: white;
-    background-color: #353137;
-    border-color: white;
+    color: $secondary-color;
+    background-color: $primary-color;
+    border-color: $secondary-color;
     text-decoration: none;
     position: sticky;
     top: 0;
@@ -120,27 +128,27 @@ html, body {
     margin-left: 5px;
     float: left;
     display: block;
-    color: white;
+    color: $secondary-color;
     text-align: center;
     text-decoration: none;
     font-size: 1.125rem;
 }
 
 .navbar a:hover {
-    background-color: white;
-    color: #353137;
+    background-color: $secondary-color;
+    color: $primary-color;
 }
 
 .active {
-    border-bottom: solid 2px white !important;
+    border-bottom: $border-solid $secondary-color !important;
 }
 
 .card-body {
-    background-color: white;
-    color: #353137;
+    background-color: $secondary-color;
+    color: $primary-color;
     padding: 15px;
     overflow: hidden;
-    border: solid 3px #353137;
+    border: $border-solid $primary-color;
     border-top: none;
 }
 
@@ -155,7 +163,7 @@ html, body {
     height: auto;
     float: left;
     margin-right: 15px;
-    border: double 3px black;
+    border: $border-double $primary-color;
 }
 
 .card-body li {
@@ -172,15 +180,15 @@ html, body {
 }
 
 #subtitle {
-    background-color: #353137;
-    color: white;
+    background-color: $primary-color;
+    color: $secondary-color;
     margin-top: 30px;
     width: 30%;
     margin-left: auto;
     margin-right: auto;
     padding-left: 15px;
     padding-right: 15px;
-    border: double 3px white;
+    border: $border-double $secondary-color;
 }
 
 #login {
@@ -200,14 +208,14 @@ html, body {
 }
 
 button, input[type=submit] {
-    background-color: #353137;
-    color: white;
+    background-color: $primary-color;
+    color: $secondary-color;
     border: none;
 }
 
 button:hover, input[type=submit]:hover {
-    background-color: white;
-    color: #353137;
+    background-color: $secondary-color;
+    color: $primary-color;
 }
 
 #submit-button {
@@ -225,7 +233,7 @@ button:hover, input[type=submit]:hover {
     width: 50%;
     padding: 0;
     font-size: 80%;
-    color: white;
+    color: $secondary-color;
     background-color: #900;
     border-radius: 0 0 5px 5px;
     box-sizing: border-box;

@@ -143,7 +143,12 @@ class ElementController extends Controller
     public function destroyAll($event_id)
     {
         $event = Event::find($event_id);
-        if($event->elements()->detach())return true;
-        else return false;
+        // dd(count($event->elements()->get()));
+        if(count($event->elements()->get()) != 0){
+            if($event->elements()->detach())return true;
+            else return false;
+        }
+        return true;
+        
     }
 }
