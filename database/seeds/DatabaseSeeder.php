@@ -97,7 +97,7 @@ class EventTableSeeder extends Seeder {
             'closing_subscription_date' => Carbon::parse('02/01/2019 16:00'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'user_id' => '1'
+            'user_id' => 1
         ]);
     }
 }

@@ -1,41 +1,49 @@
+@charset "UTF-8";
 html, body {
-  background-image: url('/images/media/background19.jpg');
+  background-image: url("/images/media/background19.jpg");
   background-repeat: no-repeat;
   background-position: center center fixed;
   background-size: 100% auto;
   color: white;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 200;
   height: 100vh;
   margin: 0;
   background-attachment: fixed;
 }
+
 .full-height {
   height: 100vh;
 }
+
 .flex-center {
   align-items: center;
   display: flex;
   justify-content: center;
 }
+
 .position-ref {
   position: relative;
 }
+
 .top-right {
   position: absolute;
   right: 10px;
   top: 18px;
 }
+
 .content {
   text-align: center;
   width: 60%;
 }
+
 .title {
   font-size: 84px;
   background-color: #353137;
   border: double 3px white;
   color: white;
 }
+
 .links > a {
   color: white;
   padding: 0 25px;
@@ -45,19 +53,23 @@ html, body {
   text-decoration: none;
   text-transform: uppercase;
 }
+
 .links > a:hover, .links > button:hover {
   color: #353137;
   background-color: white;
   text-decoration: none;
 }
+
 .links {
   background-color: #353137;
   padding: 5px;
   border: double 3px white;
 }
+
 .m-b-md {
   margin-bottom: 30px;
 }
+
 .card-header, .card-body {
   width: 70%;
   margin-left: auto;
@@ -66,6 +78,7 @@ html, body {
   padding-right: 15px;
   margin-bottom: 0;
 }
+
 .card-header {
   background-color: #353137;
   color: white;
@@ -73,11 +86,13 @@ html, body {
   border: solid 3px #353137;
   margin-top: 30px;
 }
+
 .card-header > h4 {
   margin: 0px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
 .register {
   font-size: 12pt;
   text-align: center;
@@ -87,6 +102,7 @@ html, body {
   text-decoration: none;
   color: white;
 }
+
 .navbar {
   color: white;
   background-color: #353137;
@@ -98,6 +114,7 @@ html, body {
   padding: 10px 50px 45px 50px;
   align-items: center;
 }
+
 .navbar a {
   display: inline-block;
   padding: 5px;
@@ -109,13 +126,16 @@ html, body {
   text-decoration: none;
   font-size: 1.125rem;
 }
+
 .navbar a:hover {
   background-color: white;
   color: #353137;
 }
+
 .active {
   border-bottom: solid 3px white !important;
 }
+
 .card-body {
   background-color: white;
   color: #353137;
@@ -124,8 +144,9 @@ html, body {
   border: solid 3px #353137;
   border-top: none;
 }
+
 /*Imagem à esquerda, altura limitada*/
-.card-body img:not(.pic) {
+.card-body img {
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -136,16 +157,20 @@ html, body {
   margin-right: 15px;
   border: double 3px #353137;
 }
+
 .card-body li {
   list-style-type: none;
 }
+
 .card-text {
   text-align: justify;
 }
+
 .card-text .extra {
   text-align: right;
   display: none;
 }
+
 #subtitle {
   background-color: #353137;
   color: white;
@@ -157,35 +182,43 @@ html, body {
   padding-right: 15px;
   border: double 3px white;
 }
+
 #login {
   width: 50%;
   margin: auto;
   margin-top: 10%;
 }
+
 .card-body .row {
   text-align: center;
   margin-bottom: 10px;
 }
+
 .card-body input:not(.form-check-input), .card-body select {
   width: 50%;
   height: 22px;
 }
+
 button, input[type=submit] {
   background-color: #353137;
   color: white;
   border: none;
 }
+
 button:hover, input[type=submit]:hover {
   background-color: white;
   color: #353137;
 }
+
 #submit-button {
   margin-left: auto;
   margin-right: auto;
 }
+
 .register > button {
   width: 100%;
 }
+
 /* This is the style of our error messages */
 .error {
   width: 50%;
@@ -197,24 +230,30 @@ button:hover, input[type=submit]:hover {
   box-sizing: border-box;
   text-align: center;
 }
+
 input.invalid {
   border-color: #900;
-  background-color: #fdd;
+  background-color: #FDD;
 }
+
 .emsg {
   color: red;
 }
+
 .hidden {
   visibility: hidden;
 }
+
 p.span_emsg {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
 th, td {
   padding: 8px;
 }
-#alert{
+
+#alert {
   border: double 3px white;
   font-size: 20px;
   color: white;
@@ -227,7 +266,14 @@ th, td {
   animation-iteration-count: 2;
   animation-direction: alternate;
 }
+
 @keyframes myAnimation {
-  from {top: 0px; right: 10px;}
-  to {top: 100px; right: 10px;}
+  from {
+    top: 0px;
+    right: 10px;
+  }
+  to {
+    top: 100px;
+    right: 10px;
+  }
 }
