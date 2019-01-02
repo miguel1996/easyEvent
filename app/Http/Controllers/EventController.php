@@ -80,51 +80,51 @@ class EventController extends Controller
         }
     }
 
-    public function registUser(Request $request,$id)
-    {
-        $user = Auth::user();
-        if ($user) {
-            $event = Event::find($id);
-            $subscription_elements_data = array();
-            foreach($event->elements as $element)
-            {
-                switch ($element->type) {
-                    case 'file':
-                    $file = $request->file('element'.$element->id);
-                    $filename = time().'-'.$file->getClientOriginalName();
-                    $file = $file->move('images/subscriptions/files', $filename);
-                    $value = $filename;
-                    break;
+    // public function registUser(Request $request,$id)
+    // {
+    //     $user = Auth::user();
+    //     if ($user) {
+    //         $event = Event::find($id);
+    //         $subscription_elements_data = array();
+    //         foreach($event->elements as $element)
+    //         {
+    //             switch ($element->type) {
+    //                 case 'file':
+    //                 $file = $request->file('element'.$element->id);
+    //                 $filename = time().'-'.$file->getClientOriginalName();
+    //                 $file = $file->move('images/subscriptions/files', $filename);
+    //                 $value = $filename;
+    //                 break;
 
-                    default:
-                    $value = $request->input('element'.$element->id);
-                        break;
-                }
-                $subscription_elements_data = array_add($subscription_elements_data,$element->id,$value);
-            }
+    //                 default:
+    //                 $value = $request->input('element'.$element->id);
+    //                     break;
+    //             }
+    //             $subscription_elements_data = array_add($subscription_elements_data,$element->id,$value);
+    //         }
 
-            $serialized_data = serialize($subscription_elements_data);
-            //DB::transaction: rollbacks if any exception occurs
-       $transaction_result = DB::transaction(function () use ($id,$user,$serialized_data,$request) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
-            if (!$user->events->contains($id)) {
-                $user->events()->attach($id, ['data' => $serialized_data]);
-                $request->session()->flash('status', 'Successfully subscribed to this event!');
-            }
-            else{
-                $request->session()->flash('status', 'You are already subscribed to this event!');
-            }
-           return true;//redirect('events');
-       });
-        } else {
-            return false;//redirect('/'); if it is not an autenticated user, we get redirected to the root endpoint
-        }
-        if (!$transaction_result) {
-            $request->session()->flash('status', 'Error subscribing to the event!');
-            return redirect('/');
-        } else {        
-            return redirect('/events/'.$id);
-        }
-    }
+    //         $serialized_data = serialize($subscription_elements_data);
+    //         //DB::transaction: rollbacks if any exception occurs
+    //    $transaction_result = DB::transaction(function () use ($id,$user,$serialized_data,$request) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
+    //         if (!$user->events->contains($id)) {
+    //             $user->events()->attach($id, ['data' => $serialized_data]);
+    //             $request->session()->flash('status', 'Successfully subscribed to this event!');
+    //         }
+    //         else{
+    //             $request->session()->flash('status', 'You are already subscribed to this event!');
+    //         }
+    //        return true;//redirect('events');
+    //    });
+    //     } else {
+    //         return false;//redirect('/'); if it is not an autenticated user, we get redirected to the root endpoint
+    //     }
+    //     if (!$transaction_result) {
+    //         $request->session()->flash('status', 'Error subscribing to the event!');
+    //         return redirect('/');
+    //     } else {        
+    //         return redirect('/events/'.$id);
+    //     }
+    // }
 
 
     /**
