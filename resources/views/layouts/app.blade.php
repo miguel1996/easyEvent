@@ -53,7 +53,6 @@
                 </li>
             </ul>
             @else
-            {{Session::get('status')}}
 
             <div style="float:right" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -69,6 +68,12 @@
         @endguest
     </nav>
     @endauth
+    <!-- <script>alert({{Session::get('status')}})</script> -->
+    @if(Session::get('status'))
+    <div id="alert">
+        {{Session::get('status')}}
+    </div>
+    @endif
     <main class="py-4">
         @yield('content')
     </main>

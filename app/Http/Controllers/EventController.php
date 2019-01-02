@@ -68,10 +68,10 @@ class EventController extends Controller
         });
         if(!$transaction_result)
         {
-            return dd("erro ao criar o evento");
+            $request->session()->flash('status', 'Error creating the event!');
         }
         else{
-            
+            $request->session()->flash('status', 'Event created successfully!');
             return redirect('/user/events');
         }
         //fim de if($user)
@@ -80,51 +80,51 @@ class EventController extends Controller
         }
     }
 
-    public function registUser(Request $request,$id)
-    {
-        $user = Auth::user();
-        if ($user) {
-            $event = Event::find($id);
-            $subscription_elements_data = array();
-            foreach($event->elements as $element)
-            {
-                switch ($element->type) {
-                    case 'file':
-                    $file = $request->file('element'.$element->id);
-                    $filename = time().'-'.$file->getClientOriginalName();
-                    $file = $file->move('images/subscriptions/files', $filename);
-                    $value = $filename;
-                    break;
+    // public function registUser(Request $request,$id)
+    // {
+    //     $user = Auth::user();
+    //     if ($user) {
+    //         $event = Event::find($id);
+    //         $subscription_elements_data = array();
+    //         foreach($event->elements as $element)
+    //         {
+    //             switch ($element->type) {
+    //                 case 'file':
+    //                 $file = $request->file('element'.$element->id);
+    //                 $filename = time().'-'.$file->getClientOriginalName();
+    //                 $file = $file->move('images/subscriptions/files', $filename);
+    //                 $value = $filename;
+    //                 break;
 
-                    default:
-                    $value = $request->input('element'.$element->id);
-                        break;
-                }
-                $subscription_elements_data = array_add($subscription_elements_data,$element->id,$value);
-            }
+    //                 default:
+    //                 $value = $request->input('element'.$element->id);
+    //                     break;
+    //             }
+    //             $subscription_elements_data = array_add($subscription_elements_data,$element->id,$value);
+    //         }
 
-            $serialized_data = serialize($subscription_elements_data);
-            //DB::transaction: rollbacks if any exception occurs
-       $transaction_result = DB::transaction(function () use ($id,$user,$serialized_data,$request) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
-            if (!$user->events->contains($id)) {
-                $user->events()->attach($id, ['data' => $serialized_data]);
-                $request->session()->flash('status', 'Successfully subscribed to this event!');
-            }
-            else{
-                $request->session()->flash('status', 'You are already subscribed to this event!');
-            }
-           return true;//redirect('events');
-       });
-        } else {
-            return false;//redirect('/'); if it is not an autenticated user, we get redirected to the root endpoint
-        }
-        if (!$transaction_result) {
-            $request->session()->flash('status', 'Error subscribing to the event!');
-            return redirect('/');
-        } else {        
-            return redirect('/events/'.$id);
-        }
-    }
+    //         $serialized_data = serialize($subscription_elements_data);
+    //         //DB::transaction: rollbacks if any exception occurs
+    //    $transaction_result = DB::transaction(function () use ($id,$user,$serialized_data,$request) {  //"use" serves to pass the request variable from the parent scope to the DB::transaction function scope
+    //         if (!$user->events->contains($id)) {
+    //             $user->events()->attach($id, ['data' => $serialized_data]);
+    //             $request->session()->flash('status', 'Successfully subscribed to this event!');
+    //         }
+    //         else{
+    //             $request->session()->flash('status', 'You are already subscribed to this event!');
+    //         }
+    //        return true;//redirect('events');
+    //    });
+    //     } else {
+    //         return false;//redirect('/'); if it is not an autenticated user, we get redirected to the root endpoint
+    //     }
+    //     if (!$transaction_result) {
+    //         $request->session()->flash('status', 'Error subscribing to the event!');
+    //         return redirect('/');
+    //     } else {        
+    //         return redirect('/events/'.$id);
+    //     }
+    // }
 
 
     /**
@@ -224,11 +224,11 @@ class EventController extends Controller
                 $event->opening_subscription_date = $request->opening_subscription_date;
                 $event->closing_subscription_date = $request->closing_subscription_date;
                 if (!$event->save()) {
-                    $request->session()->flash('status', 'Erro ao editar o evento');
+                    $request->session()->flash('status', 'Update Error!');
                 }
                 // $event->elements()->attach($result_create_elements[1]);//attaches all element ids that are in the $result_create_elements[1] array to the event-elements intermediary table
     
-                $request->session()->flash('status', 'Evento editado com sucesso');
+                $request->session()->flash('status', 'Event updated successfully!');
             });
 
 

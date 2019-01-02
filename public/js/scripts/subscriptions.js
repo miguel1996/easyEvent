@@ -12,6 +12,7 @@ function cancelSub(id) {
             function (responseTxt, statusTxt, xhr) {
                 if(statusTxt === "success"){
                     $('#'+id).remove();
+                    $("body").append(" <div id='alert'>You have been unsubscribed!</div>");
                 }else{
                     alert(responseTxt);
                 }
