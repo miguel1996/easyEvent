@@ -226,7 +226,7 @@ class EventController extends Controller
         } else {
             $request->session()->flash('status', 'Evento nao existente');
         }
-        return redirect('/events');
+        return redirect('/user/events');
 
     }
 
