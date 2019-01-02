@@ -141,7 +141,12 @@
                     @php($unserializedData = unserialize($user->pivot->data))
                     @foreach($unserializedData as $key => $value)
                     @php($element = \App\Element::find($key))
-                    {{$element->label}} : {{$value}}
+                    {{$element->label}} :
+                    @if(strcmp($element->type,"file") == 0)
+                    <a href="/images/subscriptions/files/{{$value}}" download>{{$value}}</a>
+                    @else
+                    {{$value}}
+                    @endif
                     <br>
                     @endforeach  
                 </li>
