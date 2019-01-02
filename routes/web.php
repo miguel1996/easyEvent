@@ -50,7 +50,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function (
 
 //event manager/admin only routes
 Route::group(['middleware' => 'App\Http\Middleware\EventManagerMiddleware'], function () {//only admins and event managers can do this
-    Route::get('/user/events/{id}', 'UserController@eventManagement');
+   // Route::get('/user/events/{id}', 'UserController@eventManagement');
+    Route::get('/events/{id}/edit', 'EventController@showEventManagement');
     Route::get('/user/events', 'UserController@myEventsManagement');
     Route::post('/events', 'EventController@create');
     Route::post('/user/events/{id}', 'EventController@update');
