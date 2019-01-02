@@ -55,7 +55,7 @@
                 <br>
             </div>
             <div class="card-header"><h4>Event Elements</h4></div>
-            <div class="card-body">
+            <div id="elements" class="card-body">
                 <ul id="fields_zone">
                     <!-- place to add elements -->
 

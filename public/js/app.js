@@ -15,6 +15,11 @@ function displayHiddenContent(id){
 	}
 }
 
-function myAlert(text){
-	alert(text);
+
+function checkInput(id){
+	var input = $("#"+id +"option:selected").attr("value");//problema aqui, não retorna a opção seleccionada
+	console.log(input);
+	if(input == 'radio'){
+		$('#fields_zone').append("<p>Please note that you need to specify the radio options using the format \"Title, Option1, Option2, ..., OptionN\"!</p>");
+	}
 }

@@ -5,7 +5,6 @@ $(document).ready(function(){
     console.log("num elements at the begining = "+numElements);
     console.log(elements);
     $("#addElement").click(function () {
-        
         if ($("#field" + numElements).val() != "" && $("#enumSelect" + numElements).val() != "") {
 
            
@@ -20,7 +19,7 @@ $(document).ready(function(){
             $("#fields_zone").append('<input style="width: 200px;" id="field' + numElements + '" list="allElements" name="label' + numElements + '">' + " ");//required pattern="[a-z A-Z]{4,}"
             
             
-            $("#fields_zone").append("<span class='text"+numElements+"'>Extra field type " + numElements + ':</span><select style="width: 200px;" id="enumSelect' + numElements + '" name="enumSelect' + numElements + '" required></select>');
+            $("#fields_zone").append("<span class='text"+numElements+"'>Extra field type " + numElements + ':</span><select onclick="checkInput('+numElements+')" style="width: 200px;" id="enumSelect' + numElements + '" name="enumSelect' + numElements + '" required></select>');
             $("#enumSelect" + numElements).append('<option style="display:none">' + "</option>");
             $(".enums").each(function () {
                 $("#enumSelect" + numElements).append("<option value=" + $(this).attr("value") + ">" + $(this).attr("value") + "</option>");

@@ -16,6 +16,9 @@
         <div class="title m-b-md">
             easyEvent
         </div>
+        <div>
+            <a href="#subtitle"><i class="fa fa-chevron-circle-down" style="font-size:48px;color:white;"></i></a>
+        </div>
     </div>
 
 </div>
@@ -24,6 +27,7 @@
 <script type= "text/javascript">
     $(document).ready(function(){$("#home-button").addClass("active");});
 </script>
+
 <div id="subtitle" class="flex-center position-ref">
     <div class="col-md-8">
         <h2>Events Open to Subscription</h2>

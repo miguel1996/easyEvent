@@ -125,7 +125,7 @@ html, body {
   border-top: none;
 }
 /*Imagem à esquerda, altura limitada*/
-.card-body img {
+.card-body img:not(.pic) {
   margin-left: auto;
   margin-right: auto;
   display: block;
