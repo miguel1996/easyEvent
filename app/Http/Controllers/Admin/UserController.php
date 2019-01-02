@@ -39,7 +39,8 @@ class UserController extends Controller
         $input['state'] = '1';
         $user = User::create($input);
         $request->session()->flash('status', 'registered new user!');
-        return redirect()->back();
+        // return redirect()->back();
+        return view('admin.index');
     }
  
     public function showUser($id){
@@ -71,6 +72,6 @@ class UserController extends Controller
         }
         $user->save();
         $request->session()->flash('status', 'user updated successfully');
-        return redirect()->back();
+        return view('admin.index');
     }
 }
