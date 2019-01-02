@@ -14,3 +14,7 @@ function displayHiddenContent(id){
 		button.attr("value", "0");
 	}
 }
+
+function myAlert(text){
+	alert(text);
+}

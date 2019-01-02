@@ -17,10 +17,10 @@ $(document).ready(function(){
             //will append a list of the possible enums and the necessary fields to insert an extra element to the event subscription
             $("#fields_zone").append("<span class='text"+numElements+"'><br><br>Extra field " + numElements + ': </span>');
             // $("#fields_zone").append('<input id="field' + numElements + '" type="text" name="label' + numElements + '">' + " ");//required pattern="[a-z A-Z]{4,}"
-            $("#fields_zone").append('<input id="field' + numElements + '" list="allElements" name="label' + numElements + '">' + " ");//required pattern="[a-z A-Z]{4,}"
+            $("#fields_zone").append('<input style="width: 200px;" id="field' + numElements + '" list="allElements" name="label' + numElements + '">' + " ");//required pattern="[a-z A-Z]{4,}"
             
             
-            $("#fields_zone").append("<span class='text"+numElements+"'>Extra field type " + numElements + ':</span><select id="enumSelect' + numElements + '" name="enumSelect' + numElements + '" required></select>');
+            $("#fields_zone").append("<span class='text"+numElements+"'>Extra field type " + numElements + ':</span><select style="width: 200px;" id="enumSelect' + numElements + '" name="enumSelect' + numElements + '" required></select>');
             $("#enumSelect" + numElements).append('<option style="display:none">' + "</option>");
             $(".enums").each(function () {
                 $("#enumSelect" + numElements).append("<option value=" + $(this).attr("value") + ">" + $(this).attr("value") + "</option>");

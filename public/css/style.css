@@ -214,3 +214,20 @@ p.span_emsg {
 th, td {
   padding: 8px;
 }
+#alert{
+  border: double 3px white;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  background-color: #353137;
+  animation: myAnimation 3s;
+  position: absolute;
+  top: 0px;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 2;
+  animation-direction: alternate;
+}
+@keyframes myAnimation {
+  from {top: 0px; right: 10px;}
+  to {top: 100px; right: 10px;}
+}
