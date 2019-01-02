@@ -149,13 +149,6 @@
                         </div>
                     </form>
                 </div>
-                <div class="form-group row mb-0">
-                    <div id="submit-button" class="register links">
-                    <button type="button" class="btn btn-primary">
-                            {{ __('DELETE USER(APARECER UM ALERT PARA CONFIRMAR)') }}
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

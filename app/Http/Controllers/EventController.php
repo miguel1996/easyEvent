@@ -68,10 +68,10 @@ class EventController extends Controller
         });
         if(!$transaction_result)
         {
-            return dd("erro ao criar o evento");
+            $request->session()->flash('status', 'Error creating the event!');
         }
         else{
-            
+            $request->session()->flash('status', 'Event created successfully!');
             return redirect('/user/events');
         }
         //fim de if($user)
@@ -224,11 +224,11 @@ class EventController extends Controller
                 $event->opening_subscription_date = $request->opening_subscription_date;
                 $event->closing_subscription_date = $request->closing_subscription_date;
                 if (!$event->save()) {
-                    $request->session()->flash('status', 'Erro ao editar o evento');
+                    $request->session()->flash('status', 'Update Error!');
                 }
                 // $event->elements()->attach($result_create_elements[1]);//attaches all element ids that are in the $result_create_elements[1] array to the event-elements intermediary table
     
-                $request->session()->flash('status', 'Evento editado com sucesso');
+                $request->session()->flash('status', 'Event updated successfully!');
             });
 
 
