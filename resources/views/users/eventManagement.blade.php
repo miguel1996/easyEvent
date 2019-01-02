@@ -22,32 +22,32 @@
                     @csrf
                     <div class="card-header"><h4>Manage Event</h4></div>
                     <div class="card-body">
-                        title: <input type="text" name="title" id="title" value="{{$event->title}}">
+                        Title: <input type="text" name="title" id="title" value="{{$event->title}}">
                         <br>
                         <br>
-                        description:
+                        Description:
                         <br>
                         <textarea name="description" id="description" cols="70" rows="10">{{$event->description}}</textarea>
                         <br>
 
                         {{-- Mostrar imagem num botão, clickar e permitir alterar --}}
-                        img: <input type="file" name="event_photo" title="Event Photo">
+                        Img: <input type="file" name="event_photo" title="Event Photo">
                         <br>
                         
                         <br>
-                        date and time of the event: <br> 
+                        Date and Time of the Event: <br> 
                         <input type="datetime-local" name="event_date" id="event_date" value="{{date('Y-m-d\TH:i', strtotime($event->event_date))}}" required> 
                         <div id="event_date_error_box" class="error" style="display:none"><br>
                         <span id="event_date_error" aria-live="polite"></span>
                         </div>
                         <br>
-                        opening subscription date: <br>
+                        Opening Subscription Date: <br>
                         <input type="datetime-local" name="opening_subscription_date" id="opening_subscription_date" value="{{date('Y-m-d\TH:i', strtotime($event->opening_subscription_date))}}" required>
                         <div id="opening_subscription_date_error_box" class="error" style="display:none"><br>
                         <span id="opening_subscription_date_error" aria-live="polite"></span>
                         </div>
                         <br>
-                        closing subscription date: <br>
+                        Closing Subscription Date: <br>
                         <input type="datetime-local" name="closing_subscription_date" id="closing_subscription_date" value="{{date('Y-m-d\TH:i', strtotime($event->closing_subscription_date))}}" required>
                         <div id="closing_subscription_date_error_box" class="error" style="display:none"><br>
                         <span id="closing_subscription_date_error" aria-live="polite"></span>
@@ -105,7 +105,7 @@
                             <button type="button" id="addElement">+</button>
                         </div>                        
                         <div class="register links">
-                            <input class="btn" type="submit" value="Edit Event">
+                            <input class="btn" type="submit" value="Update">
                         </div>
                     </div>
                 </form>
