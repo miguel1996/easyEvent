@@ -113,7 +113,7 @@
                 <br>
                 <li>
                     <div class="register links">
-                    <a href="/user/events/{{$event->id}}">Manage
+                    <a href="/events/{{$event->id}}/edit">Manage
                         <!-- <button  id="details_button" type="button">Manage</button> --><!--Tens um problema aqui, podes tentar resolver com um id autoincremental e usar esse id para fazer o display de apenas esse elemento-->
                         </a>
                     </div>

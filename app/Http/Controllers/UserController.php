@@ -40,21 +40,22 @@ class UserController extends Controller
 
     public function eventManagement($id)
     {
-        $event = Event::find($id);
+        dd("not here");
+        // $event = Event::find($id);
        
-        $table = 'elements';
-            $columns = DB::select("SHOW COLUMNS FROM ". $table." WHERE Field = 'type'");
-            preg_match("/^enum\(\'(.*)\'\)$/", $columns[0]->Type, $matches);
-            $enum = explode("','", $matches[1]); //in $enum are all input types for an element
-        $subscriptions = $event->users()->get();
-        if($event->opening_subscription_date < Carbon::now())
-        {
-            $canEditEvent = false;
-        }else{
-            $canEditEvent = true;
-        }
-        $elements = Element::distinct()->get(['label']);
-        return view('users.eventManagement',compact('event','subscriptions', 'enum','canEditEvent','elements'));
+        // $table = 'elements';
+        //     $columns = DB::select("SHOW COLUMNS FROM ". $table." WHERE Field = 'type'");
+        //     preg_match("/^enum\(\'(.*)\'\)$/", $columns[0]->Type, $matches);
+        //     $enum = explode("','", $matches[1]); //in $enum are all input types for an element
+        // $subscriptions = $event->users()->get();
+        // if($event->opening_subscription_date < Carbon::now())
+        // {
+        //     $canEditEvent = false;
+        // }else{
+        //     $canEditEvent = true;
+        // }
+        // $elements = Element::distinct()->get(['label']);
+        // return view('users.eventManagement',compact('event','subscriptions', 'enum','canEditEvent','elements'));
     }
 
 }

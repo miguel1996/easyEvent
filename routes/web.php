@@ -25,7 +25,8 @@ Route::post('/subscriptions/delete', 'SubscriptionController@cancelAJAX');
 //events routes
 Route::get('/events', 'EventController@index');
 Route::get('/events/{id}', 'EventController@show');
-Route::post('/events/{id}/regist/', 'EventController@registUser');
+//Route::post('/events/{id}/regist/', 'EventController@registUser');
+Route::post('/events/{id}/regist/', 'SubscriptionController@registUser');
 
 //admin only routes
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function () {
@@ -50,7 +51,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function (
 
 //event manager/admin only routes
 Route::group(['middleware' => 'App\Http\Middleware\EventManagerMiddleware'], function () {//only admins and event managers can do this
-    Route::get('/user/events/{id}', 'UserController@eventManagement');
+   // Route::get('/user/events/{id}', 'UserController@eventManagement');
+    Route::get('/events/{id}/edit', 'EventController@showEventManagement');
     Route::get('/user/events', 'UserController@myEventsManagement');
     Route::post('/events', 'EventController@create');
     Route::post('/user/events/{id}', 'EventController@update');
